@@ -1,1 +1,5 @@
-printf("Test");
+int main() {
+   printf("Test");
+}
+
+
