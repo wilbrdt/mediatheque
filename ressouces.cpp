@@ -2,6 +2,7 @@
 #include <iostream>
 #include "ressources.h"
 
+using namespace std;
 
 Ressources::Ressources() {
 
@@ -24,13 +25,13 @@ Livre::Livre() {
 
 }
 
-Livre::afficheInfos(){
-    printf("\n");
-    printf(Livre.nom);
-     printf("\n");
-    printf(Livre.auteur);
-     printf("\n");
-     printf("Test");
+Livre::Livre(string _nom, string _auteur) {
+    nom = _nom;
+    auteur = _auteur;
+}
+
+void Livre::afficheInfos(){
+    cout << nom << endl << auteur << endl << "Test" << endl;
 }
 
 Livre::~Livre(){

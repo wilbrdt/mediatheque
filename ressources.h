@@ -3,24 +3,25 @@
 
 class Ressources{
 protected :
-    string nom;
-    string auteur;
+    std::string nom;
+    std::string auteur;
 
 public :
     Ressources();
-    Ressources(string);
-    Ressources(string,string);
+    Ressources(std::string);
+    Ressources(std::string,std::string);
     ~Ressources();
 };
 
 class Livre : Ressources{
 protected :
     int annee;
-    string resume;
+    std::string resume;
     int nPage;
 
 public :
     Livre();
+    Livre(std::string,std::string);
     void afficheInfos();
     ~Livre();
 

@@ -1,5 +1,5 @@
 #include "ressources.h"
-#include <tsdlib.h>
+#include <stdlib.h>
 
 int main() {
    printf("Test");
@@ -7,7 +7,7 @@ int main() {
 
    Livre livre1("E-penser", "Bruce Benamran");
 
-   livre1.afficheInfo();
+   livre1.afficheInfos();
 }
 
 
