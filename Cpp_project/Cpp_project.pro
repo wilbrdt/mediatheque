@@ -5,7 +5,9 @@ CONFIG -= qt
 
 SOURCES += \
     ../main.cpp \
-    ../ressouces.cpp
+    ../ressouces.cpp \
+    ../livre.cpp
 
 HEADERS += \
-    ../ressources.h
+    ../ressources.h \
+    ../livre.h

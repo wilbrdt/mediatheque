@@ -1,39 +1,20 @@
-#include <stdlib.h>
-#include <iostream>
 #include "ressources.h"
 
 using namespace std;
 
-Ressources::Ressources() {
+Ressources::Ressources() : nom("N/A"), auteur("N/A"){
+}
+
+Ressources::Ressources(string _nom) : nom(_nom), auteur("N/A"){
 
 }
 
-Ressources::Ressources(string _nom) {
-    nom = _nom;
-}
+Ressources::Ressources(string nom, string _auteur) : nom(nom), auteur(_auteur){
 
-Ressources::Ressources(string _nom, string _auteur) {
-    nom = _nom;
-    auteur = _auteur;
 }
 
 Ressources::~Ressources(){
 
 }
 
-Livre::Livre() {
 
-}
-
-Livre::Livre(string _nom, string _auteur) {
-    nom = _nom;
-    auteur = _auteur;
-}
-
-void Livre::afficheInfos(){
-    cout << nom << endl << auteur << endl << "Test" << endl;
-}
-
-Livre::~Livre(){
-
-}

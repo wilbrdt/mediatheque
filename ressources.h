@@ -1,28 +1,21 @@
-#include <stdlib.h>
 #include <iostream>
+
+#ifndef RESSOURCES_H
+#define RESSOURCES_H
+
+using namespace std;
 
 class Ressources{
 protected :
-    std::string nom;
-    std::string auteur;
+    string nom;
+    string auteur;
 
 public :
     Ressources();
-    Ressources(std::string);
-    Ressources(std::string,std::string);
+    Ressources(string nom);
+    Ressources(string nom,string);
     ~Ressources();
 };
 
-class Livre : Ressources{
-protected :
-    int annee;
-    std::string resume;
-    int nPage;
 
-public :
-    Livre();
-    Livre(std::string,std::string);
-    void afficheInfos();
-    ~Livre();
-
-};
+#endif // RESSOURCES_H

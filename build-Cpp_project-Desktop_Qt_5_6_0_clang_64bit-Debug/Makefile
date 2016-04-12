@@ -49,9 +49,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../main.cpp \
-		../ressouces.cpp 
+		../ressouces.cpp \
+		../livre.cpp 
 OBJECTS       = main.o \
-		ressouces.o
+		ressouces.o \
+		livre.o
 DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/qdevice.pri \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/device_config.prf \
@@ -171,6 +173,7 @@ DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/qt_config.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_post.prf \
+		../Cpp_project/.qmake.stash \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/default_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -186,8 +189,10 @@ DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/exceptions.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/yacc.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/lex.prf \
-		../Cpp_project/Cpp_project.pro ../ressources.h ../main.cpp \
-		../ressouces.cpp
+		../Cpp_project/Cpp_project.pro ../ressources.h \
+		../livre.h ../main.cpp \
+		../ressouces.cpp \
+		../livre.cpp
 QMAKE_TARGET  = Cpp_project
 DESTDIR       = 
 TARGET        = Cpp_project
@@ -318,6 +323,7 @@ Makefile: ../Cpp_project/Cpp_project.pro /Users/MacMax/Qt/5.6/clang_64/mkspecs/m
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/qt_config.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/default_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -454,6 +460,7 @@ Makefile: ../Cpp_project/Cpp_project.pro /Users/MacMax/Qt/5.6/clang_64/mkspecs/m
 /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/qt_config.prf:
 /Users/MacMax/Qt/5.6/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/default_pre.prf:
 /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -518,6 +525,9 @@ main.o: ../main.cpp ../ressources.h
 
 ressouces.o: ../ressouces.cpp ../ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ressouces.o ../ressouces.cpp
+
+livre.o: ../livre.cpp ../livre.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o livre.o ../livre.cpp
 
 ####### Install
 
