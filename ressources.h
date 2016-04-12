@@ -12,8 +12,8 @@ protected :
 
 public :
     Ressources();
-    Ressources(string nom);
-    Ressources(string nom,string);
+    Ressources(string _nom);
+    Ressources(string _nom, string _auteur);
     ~Ressources();
 };
 

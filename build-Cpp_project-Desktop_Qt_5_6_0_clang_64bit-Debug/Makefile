@@ -50,10 +50,22 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../main.cpp \
 		../ressouces.cpp \
-		../livre.cpp 
+		../livre.cpp \
+		../cd.cpp \
+		../vhs.cpp \
+		../num.cpp \
+		../dvd.cpp \
+		../article.cpp \
+		../revue.cpp 
 OBJECTS       = main.o \
 		ressouces.o \
-		livre.o
+		livre.o \
+		cd.o \
+		vhs.o \
+		num.o \
+		dvd.o \
+		article.o \
+		revue.o
 DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/qdevice.pri \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/device_config.prf \
@@ -190,9 +202,21 @@ DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/yacc.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/lex.prf \
 		../Cpp_project/Cpp_project.pro ../ressources.h \
-		../livre.h ../main.cpp \
+		../livre.h \
+		../cd.h \
+		../vhs.h \
+		../num.h \
+		../dvd.h \
+		../article.h \
+		../revue.h ../main.cpp \
 		../ressouces.cpp \
-		../livre.cpp
+		../livre.cpp \
+		../cd.cpp \
+		../vhs.cpp \
+		../num.cpp \
+		../dvd.cpp \
+		../article.cpp \
+		../revue.cpp
 QMAKE_TARGET  = Cpp_project
 DESTDIR       = 
 TARGET        = Cpp_project
@@ -520,14 +544,42 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../main.cpp ../ressources.h
+main.o: ../main.cpp ../ressources.h \
+		../livre.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
 
 ressouces.o: ../ressouces.cpp ../ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ressouces.o ../ressouces.cpp
 
-livre.o: ../livre.cpp ../livre.h
+livre.o: ../livre.cpp ../livre.h \
+		../ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o livre.o ../livre.cpp
+
+cd.o: ../cd.cpp ../cd.h \
+		../ressources.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cd.o ../cd.cpp
+
+vhs.o: ../vhs.cpp ../VHS.h \
+		../ressources.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vhs.o ../vhs.cpp
+
+num.o: ../num.cpp ../Num.h \
+		../ressources.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o num.o ../num.cpp
+
+dvd.o: ../dvd.cpp ../DVD.h \
+		../VHS.h \
+		../ressources.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dvd.o ../dvd.cpp
+
+article.o: ../article.cpp ../Article.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o article.o ../article.cpp
+
+revue.o: ../revue.cpp ../revue.h \
+		../livre.h \
+		../ressources.h \
+		../article.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o revue.o ../revue.cpp
 
 ####### Install
 
