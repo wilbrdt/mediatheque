@@ -12,7 +12,8 @@ SOURCES += \
     ../num.cpp \
     ../dvd.cpp \
     ../article.cpp \
-    ../revue.cpp
+    ../revue.cpp \
+    ../mediatheque.cpp
 
 HEADERS += \
     ../ressources.h \
@@ -22,4 +23,5 @@ HEADERS += \
     ../num.h \
     ../dvd.h \
     ../article.h \
-    ../revue.h
+    ../revue.h \
+    ../mediatheque.h

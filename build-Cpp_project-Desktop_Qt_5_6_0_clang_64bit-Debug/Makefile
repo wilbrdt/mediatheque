@@ -56,7 +56,8 @@ SOURCES       = ../main.cpp \
 		../num.cpp \
 		../dvd.cpp \
 		../article.cpp \
-		../revue.cpp 
+		../revue.cpp \
+		../mediatheque.cpp 
 OBJECTS       = main.o \
 		ressouces.o \
 		livre.o \
@@ -65,7 +66,8 @@ OBJECTS       = main.o \
 		num.o \
 		dvd.o \
 		article.o \
-		revue.o
+		revue.o \
+		mediatheque.o
 DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/qdevice.pri \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/device_config.prf \
@@ -208,7 +210,8 @@ DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		../num.h \
 		../dvd.h \
 		../article.h \
-		../revue.h ../main.cpp \
+		../revue.h \
+		../mediatheque.h ../main.cpp \
 		../ressouces.cpp \
 		../livre.cpp \
 		../cd.cpp \
@@ -216,7 +219,8 @@ DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		../num.cpp \
 		../dvd.cpp \
 		../article.cpp \
-		../revue.cpp
+		../revue.cpp \
+		../mediatheque.cpp
 QMAKE_TARGET  = Cpp_project
 DESTDIR       = 
 TARGET        = Cpp_project
@@ -575,11 +579,14 @@ dvd.o: ../dvd.cpp ../DVD.h \
 article.o: ../article.cpp ../Article.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o article.o ../article.cpp
 
-revue.o: ../revue.cpp ../revue.h \
+revue.o: ../revue.cpp ../Revue.h \
 		../livre.h \
 		../ressources.h \
 		../article.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o revue.o ../revue.cpp
+
+mediatheque.o: ../mediatheque.cpp ../mediatheque.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mediatheque.o ../mediatheque.cpp
 
 ####### Install
 
