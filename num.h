@@ -18,6 +18,12 @@ public :
     Num(string _nom, string _auteur, string _type, int _taille, string _chemin);
     ~Num();
 
+    string getType() const;
+    void setType(const string &value);
+    int getTaille() const;
+    void setTaille(int value);
+    string getChemin() const;
+    void setChemin(const string &value);
 };
 
 #endif // Num_H

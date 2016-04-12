@@ -2,6 +2,36 @@
 
 using namespace std;
 
+float CD::getDuree() const
+{
+    return duree;
+}
+
+void CD::setDuree(float value)
+{
+    duree = value;
+}
+
+int CD::getNPiste() const
+{
+    return nPiste;
+}
+
+void CD::setNPiste(int value)
+{
+    nPiste = value;
+}
+
+string CD::getProd() const
+{
+    return prod;
+}
+
+void CD::setProd(const string &value)
+{
+    prod = value;
+}
+
 CD::CD() : Ressources(), duree(0), nPiste(0), prod("N/A"){
 
 }

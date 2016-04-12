@@ -21,6 +21,10 @@ public:
     Revue(string _nom, string _auteur, int _annee, string _resume, int _nPage, string _editeur);
     Revue(string _nom, string _auteur, int _annee, string _resume, int _nPage, string _editeur, int _nArticle);
     ~Revue();
+    string getEditeur() const;
+    void setEditeur(const string &value);
+    int getNArticle() const;
+    void setNArticle(int value);
 };
 
 #endif // REVUE_H

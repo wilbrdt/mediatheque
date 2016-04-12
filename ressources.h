@@ -15,7 +15,13 @@ public :
     Ressources(string _nom);
     Ressources(string _nom, string _auteur);
     ~Ressources();
+    string getNom() const;
+    void setNom(const string &value);
+    string getAuteur() const;
+    void setAuteur(const string &value);
 };
 
 
 #endif // RESSOURCES_H
+
+

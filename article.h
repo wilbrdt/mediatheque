@@ -15,6 +15,10 @@ public:
     Article(string _nom);
     Article(string _nom, string _auteur);
     ~Article();
+    string getNomArticle() const;
+    void setNomArticle(const string &value);
+    string getAuteurArticle() const;
+    void setAuteurArticle(const string &value);
 };
 
 #endif // ARTICLE_H

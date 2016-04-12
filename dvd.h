@@ -15,6 +15,8 @@ public:
     DVD(string _nom, string _auteur, float _duree, string _prod);
     DVD(string _nom, string _auteur, float _duree, string _prod, int _nPiste);
     ~DVD();
+    int getNPiste() const;
+    void setNPiste(int value);
 };
 
 #endif // DVD_H

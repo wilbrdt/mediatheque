@@ -2,6 +2,26 @@
 
 using namespace std;
 
+float VHS::getDuree() const
+{
+    return duree;
+}
+
+void VHS::setDuree(float value)
+{
+    duree = value;
+}
+
+string VHS::getProd() const
+{
+    return prod;
+}
+
+void VHS::setProd(const string &value)
+{
+    prod = value;
+}
+
 VHS::VHS() : Ressources(), duree(0), prod("N/A"){
 
 }

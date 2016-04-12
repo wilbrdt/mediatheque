@@ -17,4 +17,23 @@ Ressources::~Ressources(){
 
 }
 
+string Ressources::getAuteur() const
+{
+    return auteur;
+}
+
+void Ressources::setAuteur(const string &value)
+{
+    auteur = value;
+}
+
+string Ressources::getNom() const
+{
+    return nom;
+}
+
+void Ressources::setNom(const string &value)
+{
+    nom = value;
+}
 

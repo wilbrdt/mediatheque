@@ -2,6 +2,16 @@
 
 using namespace std;
 
+int DVD::getNPiste() const
+{
+    return nPiste;
+}
+
+void DVD::setNPiste(int value)
+{
+    nPiste = value;
+}
+
 DVD::DVD() : VHS(){
 
 }

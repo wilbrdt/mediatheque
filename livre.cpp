@@ -2,6 +2,36 @@
 
 using namespace std;
 
+int Livre::getAnnee() const
+{
+    return annee;
+}
+
+void Livre::setAnnee(int value)
+{
+    annee = value;
+}
+
+string Livre::getResume() const
+{
+    return resume;
+}
+
+void Livre::setResume(const string &value)
+{
+    resume = value;
+}
+
+int Livre::getNPage() const
+{
+    return nPage;
+}
+
+void Livre::setNPage(int value)
+{
+    nPage = value;
+}
+
 Livre::Livre() : Ressources(), annee(0000), resume("N/A"), nPage(0){
 
 }

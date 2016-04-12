@@ -2,6 +2,26 @@
 
 using namespace std;
 
+string Revue::getEditeur() const
+{
+    return editeur;
+}
+
+void Revue::setEditeur(const string &value)
+{
+    editeur = value;
+}
+
+int Revue::getNArticle() const
+{
+    return nArticle;
+}
+
+void Revue::setNArticle(int value)
+{
+    nArticle = value;
+}
+
 Revue::Revue() : Livre(), editeur("N/A"), nArticle(0){
     for(int i = 0; i< 100; i++) {
         articles[i] = new Article();

@@ -19,6 +19,12 @@ public:
     CD(string _nom, string _auteur, float _duree, int _nPiste);
     CD(string _nom, string _auteur, float _duree, int _nPiste, string _prod);
     ~CD();
+    float getDuree() const;
+    void setDuree(float value);
+    int getNPiste() const;
+    void setNPiste(int value);
+    string getProd() const;
+    void setProd(const string &value);
 };
 
 #endif // CD_H

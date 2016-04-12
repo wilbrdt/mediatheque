@@ -2,6 +2,36 @@
 
 using namespace std;
 
+string Num::getType() const
+{
+    return type;
+}
+
+void Num::setType(const string &value)
+{
+    type = value;
+}
+
+int Num::getTaille() const
+{
+    return taille;
+}
+
+void Num::setTaille(int value)
+{
+    taille = value;
+}
+
+string Num::getChemin() const
+{
+    return chemin;
+}
+
+void Num::setChemin(const string &value)
+{
+    chemin = value;
+}
+
 Num::Num() : Ressources(), type("N/A"), taille(0), chemin("N/A"){
 
 }

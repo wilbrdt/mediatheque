@@ -19,6 +19,12 @@ public :
     void afficheInfos();
     ~Livre();
 
+    int getAnnee() const;
+    void setAnnee(int value);
+    string getResume() const;
+    void setResume(const string &value);
+    int getNPage() const;
+    void setNPage(int value);
 };
 
 #endif // LIVRE_H
