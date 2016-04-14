@@ -13,7 +13,8 @@ SOURCES += \
     ../dvd.cpp \
     ../article.cpp \
     ../revue.cpp \
-    ../mediatheque.cpp
+    ../mediatheque.cpp \
+    ../utilisateur.cpp
 
 HEADERS += \
     ../ressources.h \
@@ -24,4 +25,7 @@ HEADERS += \
     ../dvd.h \
     ../article.h \
     ../revue.h \
-    ../mediatheque.h
+    ../mediatheque.h \
+    ../utilisateur.h
+
+DISTFILES +=
