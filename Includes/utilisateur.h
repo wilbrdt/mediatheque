@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #ifndef UTILISATEUR_H
 #define UTILISATEUR_H
@@ -16,6 +17,7 @@ public:
     ~Utilisateur();
     string getNomUtilisateur() const;
     void setNomUtilisateur(const string &value);
+    void load(string filename);
     void reconnaissanceAction(string action);
 };
 

@@ -3,13 +3,6 @@
 #include "utilisateur.h"
 
 int main() {
-//   printf("Test");
-//   printf("Test2");
-
-//   Livre livre1("E-penser", "Bruce Benamran");
-
-//   livre1.afficheInfos();
-
     Utilisateur user;
     string nomUtilisateur;
     string action;
