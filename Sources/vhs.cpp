@@ -1,4 +1,4 @@
-#include "VHS.h"
+#include "../Includes/VHS.h"
 
 using namespace std;
 

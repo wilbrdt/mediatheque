@@ -1,4 +1,4 @@
-#include "utilisateur.h"
+#include "../Includes/utilisateur.h"
 
 string Utilisateur::getNomUtilisateur() const
 {
@@ -19,6 +19,7 @@ void Utilisateur::load(string filename) {
 
     string file = filename + ".txt";
     bool nouvelleRessource = true;
+    string nouvelleLigne = "\n";
 
     ifstream fichier(file, ios::in);  // on ouvre le fichier en lecture
 
@@ -26,7 +27,7 @@ void Utilisateur::load(string filename) {
        {
             string ligne;
            while(getline(fichier, ligne)) {
-                if (ligne == '\n')
+                if (ligne.compare(nouvelleLigne))
                     nouvelleRessource = true;
 
                 else if (nouvelleRessource == true) {

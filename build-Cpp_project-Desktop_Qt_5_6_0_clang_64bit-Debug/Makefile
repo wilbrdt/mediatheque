@@ -48,17 +48,17 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../main.cpp \
-		../ressouces.cpp \
-		../livre.cpp \
-		../cd.cpp \
-		../vhs.cpp \
-		../num.cpp \
-		../dvd.cpp \
-		../article.cpp \
-		../revue.cpp \
-		../mediatheque.cpp \
-		../utilisateur.cpp 
+SOURCES       = ../Sources/main.cpp \
+		../Sources/ressouces.cpp \
+		../Sources/livre.cpp \
+		../Sources/cd.cpp \
+		../Sources/vhs.cpp \
+		../Sources/num.cpp \
+		../Sources/dvd.cpp \
+		../Sources/article.cpp \
+		../Sources/revue.cpp \
+		../Sources/mediatheque.cpp \
+		../Sources/utilisateur.cpp 
 OBJECTS       = main.o \
 		ressouces.o \
 		livre.o \
@@ -205,26 +205,26 @@ DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/exceptions.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/yacc.prf \
 		/Users/MacMax/Qt/5.6/clang_64/mkspecs/features/lex.prf \
-		../Cpp_project/Cpp_project.pro ../ressources.h \
-		../livre.h \
-		../cd.h \
-		../vhs.h \
-		../num.h \
-		../dvd.h \
-		../article.h \
-		../revue.h \
-		../mediatheque.h \
-		../utilisateur.h ../main.cpp \
-		../ressouces.cpp \
-		../livre.cpp \
-		../cd.cpp \
-		../vhs.cpp \
-		../num.cpp \
-		../dvd.cpp \
-		../article.cpp \
-		../revue.cpp \
-		../mediatheque.cpp \
-		../utilisateur.cpp
+		../Cpp_project/Cpp_project.pro ../Includes/ressources.h \
+		../Includes/livre.h \
+		../Includes/cd.h \
+		../Includes/vhs.h \
+		../Includes/num.h \
+		../Includes/dvd.h \
+		../Includes/article.h \
+		../Includes/revue.h \
+		../Includes/mediatheque.h \
+		../Includes/utilisateur.h ../Sources/main.cpp \
+		../Sources/ressouces.cpp \
+		../Sources/livre.cpp \
+		../Sources/cd.cpp \
+		../Sources/vhs.cpp \
+		../Sources/num.cpp \
+		../Sources/dvd.cpp \
+		../Sources/article.cpp \
+		../Sources/revue.cpp \
+		../Sources/mediatheque.cpp \
+		../Sources/utilisateur.cpp
 QMAKE_TARGET  = Cpp_project
 DESTDIR       = 
 TARGET        = Cpp_project
@@ -552,49 +552,38 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../main.cpp ../livre.h \
-		../ressources.h \
-		../utilisateur.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
+main.o: ../Sources/main.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Sources/main.cpp
 
-ressouces.o: ../ressouces.cpp ../ressources.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ressouces.o ../ressouces.cpp
+ressouces.o: ../Sources/ressouces.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ressouces.o ../Sources/ressouces.cpp
 
-livre.o: ../livre.cpp ../livre.h \
-		../ressources.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o livre.o ../livre.cpp
+livre.o: ../Sources/livre.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o livre.o ../Sources/livre.cpp
 
-cd.o: ../cd.cpp ../cd.h \
-		../ressources.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cd.o ../cd.cpp
+cd.o: ../Sources/cd.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cd.o ../Sources/cd.cpp
 
-vhs.o: ../vhs.cpp ../VHS.h \
-		../ressources.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vhs.o ../vhs.cpp
+vhs.o: ../Sources/vhs.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vhs.o ../Sources/vhs.cpp
 
-num.o: ../num.cpp ../Num.h \
-		../ressources.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o num.o ../num.cpp
+num.o: ../Sources/num.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o num.o ../Sources/num.cpp
 
-dvd.o: ../dvd.cpp ../DVD.h \
-		../VHS.h \
-		../ressources.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dvd.o ../dvd.cpp
+dvd.o: ../Sources/dvd.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dvd.o ../Sources/dvd.cpp
 
-article.o: ../article.cpp ../Article.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o article.o ../article.cpp
+article.o: ../Sources/article.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o article.o ../Sources/article.cpp
 
-revue.o: ../revue.cpp ../Revue.h \
-		../livre.h \
-		../ressources.h \
-		../article.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o revue.o ../revue.cpp
+revue.o: ../Sources/revue.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o revue.o ../Sources/revue.cpp
 
-mediatheque.o: ../mediatheque.cpp ../mediatheque.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mediatheque.o ../mediatheque.cpp
+mediatheque.o: ../Sources/mediatheque.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mediatheque.o ../Sources/mediatheque.cpp
 
-utilisateur.o: ../utilisateur.cpp ../utilisateur.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilisateur.o ../utilisateur.cpp
+utilisateur.o: ../Sources/utilisateur.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilisateur.o ../Sources/utilisateur.cpp
 
 ####### Install
 

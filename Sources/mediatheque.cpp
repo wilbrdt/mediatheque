@@ -1,4 +1,4 @@
-#include "mediatheque.h"
+#include "../Includes/mediatheque.h"
 
 Mediatheque::Mediatheque() : nomMed("N/A") {
 

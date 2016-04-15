@@ -1,6 +1,6 @@
-#include "ressources.h"
-#include "livre.h"
-#include "utilisateur.h"
+#include "../Includes/ressources.h"
+#include "../Includes/livre.h"
+#include "../Includes/utilisateur.h"
 
 int main() {
     Utilisateur user;

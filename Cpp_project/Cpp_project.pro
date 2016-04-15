@@ -4,28 +4,28 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    ../main.cpp \
-    ../ressouces.cpp \
-    ../livre.cpp \
-    ../cd.cpp \
-    ../vhs.cpp \
-    ../num.cpp \
-    ../dvd.cpp \
-    ../article.cpp \
-    ../revue.cpp \
-    ../mediatheque.cpp \
-    ../utilisateur.cpp
+    ../Sources/main.cpp \
+    ../Sources/ressouces.cpp \
+    ../Sources/livre.cpp \
+    ../Sources/cd.cpp \
+    ../Sources/vhs.cpp \
+    ../Sources/num.cpp \
+    ../Sources/dvd.cpp \
+    ../Sources/article.cpp \
+    ../Sources/revue.cpp \
+    ../Sources/mediatheque.cpp \
+    ../Sources/utilisateur.cpp
 
 HEADERS += \
-    ../ressources.h \
-    ../livre.h \
-    ../cd.h \
-    ../vhs.h \
-    ../num.h \
-    ../dvd.h \
-    ../article.h \
-    ../revue.h \
-    ../mediatheque.h \
-    ../utilisateur.h
+    ../Includes/ressources.h \
+    ../Includes/livre.h \
+    ../Includes/cd.h \
+    ../Includes/vhs.h \
+    ../Includes/num.h \
+    ../Includes/dvd.h \
+    ../Includes/article.h \
+    ../Includes/revue.h \
+    ../Includes/mediatheque.h \
+    ../Includes/utilisateur.h
 
 DISTFILES +=
