@@ -1,140 +1,73 @@
 #include "../Includes/utilisateur.h"
-
-string Utilisateur::getNomUtilisateur() const
-{
-    return nomUtilisateur;
-}
-
-void Utilisateur::setNomUtilisateur(const string &value)
-{
-    nomUtilisateur = value;
-}
+#include "../Includes/library_string.h"
 
 Utilisateur::Utilisateur()
 {
     
 }
 
-void Utilisateur::load(string filename) {
-
-    string file = filename + ".txt";
-    bool nouvelleRessource = true;
-    string nouvelleLigne = "\n";
-
-    ifstream fichier(file, ios::in);  // on ouvre le fichier en lecture
-
-    if(fichier)  // si l'ouverture a réussi
-       {
-            string ligne;
-           while(getline(fichier, ligne)) {
-                if (ligne.compare(nouvelleLigne))
-                    nouvelleRessource = true;
-
-                else if (nouvelleRessource == true) {
-
-                    nouvelleRessource = false;
-
-                    if (ligne == "Livre") {
-
-                    }
-
-                    else if (ligne == "CD") {
-
-                    }
-
-                    else if (ligne == "VHS") {
-
-                    }
-
-                    else if (ligne == "DVD") {
-
-                    }
-
-                    else if (ligne == "Ressource numérique") {
-
-                    }
-
-                    else if (ligne == "Revue") {
-
-                    }
-
-                    else if (ligne == "Article") {
-
-                    }
-                }
-           }
-
-                    fichier.close();  // on ferme le fichier
-       }
-
-     else  // sinon
-       cerr << "Impossible d'ouvrir le fichier !" << endl;
-
-}
-
-void Utilisateur::Add(string type) {
-    
-    string _nom;
-    string _auteur;
-    
-    cout << "Quelle est le nom de la ressource" << endl;
-    getline(cin, _nom);
-    cout << "Qui est l'auteur de la ressource" << endl;
-    getline(cin, _nom);
-    cout << type << endl;
-}
-
 Utilisateur::~Utilisateur() {
 
 }
 
-void Utilisateur::reconnaissanceAction(string action) {
-    string instruction = action.substr(0, action.find(" "));
+void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentMed) {
 
-    if (instruction == "BYE") {
-        cout << "Au revoir" << endl;
+    string commande = découpageCommande(instruction);
+    string complément = découpageComplément(instruction);
+
+    if (commande == "BYE") {
+        currentMed->bye();
     }
 
-    else if (instruction == "ADD") {
+    else if (commande == "ADD") {
         cout << "ajout" << endl;
     }
 
-    else if (instruction == "LOAD") {
-        this->load(action.substr(action.find(" ")+1, action.size()));
-        cout << "Chargement effectué" << endl;
+    else if (commande == "LOAD") {
+        currentMed->load(complément);
     }
 
-    else if (instruction == "SAVE") {
+    else if (commande == "SAVE") {
         cout << "save" << endl;
     }
 
-    else if (instruction == "SEARCH") {
+    else if (commande == "SEARCH") {
         cout << "search" << endl;
     }
 
-    else if (instruction == "CLEAR") {
+    else if (commande == "CLEAR") {
         cout << "clear" << endl;
     }
 
-    else if (instruction == "LIST") {
+    else if (commande == "LIST") {
         cout << "list" << endl;
     }
 
-    else if (instruction == "SHOW") {
-        cout << "show" << endl;
+    else if (commande == "SHOW") {
+        currentMed->show(complément);
     }
 
-    else if (instruction == "DELETE") {
-        cout << "delete" << endl;
+    else if (commande == "DELETE") {
+        currentMed->deleteId(complément);
     }
 
-    else if (instruction == "RESET") {
-        cout << "reset" << endl;
+    else if (commande == "RESET") {
+        currentMed->reset();
     }
 
     else {
         cout << "Je ne connais pas cette fonction, veuillez en choisir une autre" << endl;
     }
+}
+
+string Utilisateur::nomUtilisateur() const
+{
+    return _nomUtilisateur;
+}
+
+void Utilisateur::setNomUtilisateur(const string &nomUtilisateur)
+{
+    _nomUtilisateur = nomUtilisateur;
 }
 
 

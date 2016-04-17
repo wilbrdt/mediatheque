@@ -2,60 +2,51 @@
 
 using namespace std;
 
-float CD::getDuree() const
-{
-    return duree;
+CD::CD() : Ressources(){
+    
 }
 
-void CD::setDuree(float value)
-{
-    duree = value;
-}
-
-int CD::getNPiste() const
-{
-    return nPiste;
-}
-
-void CD::setNPiste(int value)
-{
-    nPiste = value;
-}
-
-string CD::getProd() const
-{
-    return prod;
-}
-
-void CD::setProd(const string &value)
-{
-    prod = value;
-}
-
-CD::CD() : Ressources(), duree(0), nPiste(0), prod("N/A"){
-
-}
-
-CD::CD(string _nom) : Ressources(_nom), duree(0), nPiste(0), prod("N/A"){
-
-}
-
-CD::CD(string _nom, string _auteur) : Ressources(_nom, _auteur), duree(0), nPiste(0), prod("N/A"){
-
-}
-
-CD::CD(string _nom, string _auteur, float _duree) : Ressources(_nom, _auteur), duree(_duree), nPiste(0), prod("N/A"){
-
-}
-
-CD::CD(string _nom, string _auteur, float _duree, int _nPiste) : Ressources(_nom, _auteur), duree(_duree), nPiste(_nPiste), prod("N/A"){
-
-}
-
-CD::CD(string _nom, string _auteur, float _duree, int _nPiste, string _prod) : Ressources(_nom, _auteur), duree(_duree), nPiste(_nPiste), prod(_prod){
-
-}
 
 CD::~CD(){
+
+}
+
+
+string CD::prod() const
+{
+    return _prod;
+}
+
+void CD::setProd(const string &prod)
+{
+    _prod = prod;
+}
+
+string CD::durée() const
+{
+    return _durée;
+}
+
+void CD::setDurée(const string &durée)
+{
+    _durée = durée;
+}
+
+string CD::nPiste() const
+{
+    return _nPiste;
+}
+
+void CD::setNPiste(const string &nPiste)
+{
+    _nPiste = nPiste;
+}
+
+void CD::show() {
+
+    Ressources::show();
+    cout << "Durée du CD : " << _durée << endl;
+    cout << "Nombre de piste : " << _nPiste << endl;
+    cout << "Maison de production : " << _prod << endl;
 
 }

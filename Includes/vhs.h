@@ -4,23 +4,24 @@
 #define VHS_H
 
 
-class VHS :  Ressources
-{
-protected :
-    float duree;
-    string prod;
+class VHS : public Ressources {
 
 public:
     VHS();
-    VHS(string _nom);
-    VHS(string _nom, string _auteur);
-    VHS(string _nom, string _auteur, float _duree);
-    VHS(string _nom, string _auteur, float _duree, string _prod);
     ~VHS();
-    float getDuree() const;
-    void setDuree(float value);
-    string getProd() const;
-    void setProd(const string &value);
+
+    string prod() const;
+    void setProd(const string &prod);
+
+    string durée() const;
+    void setDurée(const string &durée);
+
+    virtual void show();
+
+protected :
+    string _durée;
+    string _prod;
+
 };
 
 #endif // VHS_H

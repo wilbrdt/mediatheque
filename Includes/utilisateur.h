@@ -1,24 +1,28 @@
-#include <iostream>
-#include <fstream>
-
 #ifndef UTILISATEUR_H
 #define UTILISATEUR_H
 
+#include <iostream>
+#include <fstream>
+#include "../Includes/mediatheque.h"
+
 using namespace std;
 
-class Utilisateur
-{
-protected :
-    string nomUtilisateur;
+class Utilisateur {
 
 public:
     Utilisateur();
     void Add(string type);
     ~Utilisateur();
-    string getNomUtilisateur() const;
-    void setNomUtilisateur(const string &value);
+
     void load(string filename);
-    void reconnaissanceAction(string action);
+    void reconnaissanceAction(string action, Mediatheque* currentMed);
+
+    string nomUtilisateur() const;
+    void setNomUtilisateur(const string &nomUtilisateur);
+
+protected :
+    string _nomUtilisateur;
+
 };
 
 #endif // UTILISATEUR_H

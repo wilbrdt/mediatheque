@@ -3,27 +3,29 @@
 #ifndef Num_H
 #define Num_H
 
-class Num : Ressources{
-protected :
-    string type;
-    int taille;
-    string chemin;
+class Num : public Ressources{
 
 public :
     Num();
-    Num(string _nom);
-    Num(string _nom, string _auteur);
-    Num(string _nom, string _auteur, string _type);
-    Num(string _nom, string _auteur, string _type, int _taille);
-    Num(string _nom, string _auteur, string _type, int _taille, string _chemin);
     ~Num();
 
-    string getType() const;
-    void setType(const string &value);
-    int getTaille() const;
-    void setTaille(int value);
-    string getChemin() const;
-    void setChemin(const string &value);
+
+    string type() const;
+    void setType(const string &type);
+
+    string chemin() const;
+    void setChemin(const string &chemin);
+
+    string taille() const;
+    void setTaille(const string &taille);
+
+    virtual void show();
+
+protected :
+    string _type;
+    string _taille;
+    string _chemin;
+
 };
 
 #endif // Num_H

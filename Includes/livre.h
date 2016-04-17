@@ -3,28 +3,28 @@
 #ifndef LIVRE_H
 #define LIVRE_H
 
-class Livre : Ressources{
-protected :
-    int annee;
-    string resume;
-    int nPage;
+class Livre : public Ressources{
 
 public :
     Livre();
-    Livre(string _nom);
-    Livre(string _nom, string _auteur);
-    Livre(string _nom, string _auteur, int _annee);
-    Livre(string _nom, string _auteur, int _annee, string _resume);
-    Livre(string _nom, string _auteur, int _annee, string _resume, int _nPage);
-    void afficheInfos();
+    void afficheInfos(); //fonction de test
     ~Livre();
 
-    int getAnnee() const;
-    void setAnnee(int value);
-    string getResume() const;
-    void setResume(const string &value);
-    int getNPage() const;
-    void setNPage(int value);
+    virtual string année() const;
+    void setAnnée(const string &année);
+
+    string résumé() const;
+    void setRésumé(const string &résumé);
+
+    string nPage() const;
+    void setNPage(const string &nPage);
+
+    virtual void show();
+
+protected :
+    string _année;
+    string _résumé;
+    string _nPage;
 };
 
 #endif // LIVRE_H

@@ -2,38 +2,60 @@
 
 using namespace std;
 
-Ressources::Ressources() : nom("N/A"), auteur("N/A"){
+Ressources::Ressources() {
 }
 
-Ressources::Ressources(string _nom) : nom(_nom), auteur("N/A"){
-
-}
-
-Ressources::Ressources(string nom, string _auteur) : nom(nom), auteur(_auteur){
-
-}
 
 Ressources::~Ressources(){
 
 }
 
-string Ressources::getAuteur() const
+string Ressources::nom() const
 {
-    return auteur;
+return _nom;
 }
 
-void Ressources::setAuteur(const string &value)
+void Ressources::setNom(const string &nom)
 {
-    auteur = value;
+_nom = nom;
 }
 
-string Ressources::getNom() const
+string Ressources::auteur() const
 {
-    return nom;
+return _auteur;
 }
 
-void Ressources::setNom(const string &value)
+void Ressources::setAuteur(const string &auteur)
 {
-    nom = value;
+_auteur = auteur;
 }
 
+string Ressources::id() const
+{
+return _id;
+}
+
+void Ressources::setId(const string &id)
+{
+_id = id;
+}
+
+string Ressources::type() const
+{
+return _type;
+}
+
+void Ressources::setType(const string &type)
+{
+_type = type;
+}
+
+
+void Ressources::show() {
+
+    cout << endl << "Informations sur la ressource : " << _id << endl;
+    cout << "Type : " << _type << endl;
+    cout << "Titre : " << _nom << endl;
+    cout << "Auteur : " << _auteur << endl;
+
+}

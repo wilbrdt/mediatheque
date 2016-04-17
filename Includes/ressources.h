@@ -6,22 +6,39 @@
 using namespace std;
 
 class Ressources{
-protected :
-    string nom;
-    string auteur;
 
 public :
     Ressources();
-    Ressources(string _nom);
-    Ressources(string _nom, string _auteur);
-    ~Ressources();
-    string getNom() const;
-    void setNom(const string &value);
-    string getAuteur() const;
-    void setAuteur(const string &value);
+    virtual ~Ressources();
+
+    string nom() const;
+    void setNom(const string &nom);
+
+    string auteur() const;
+    void setAuteur(const string &auteur);
+
+    string id() const;
+    void setId(const string &id);
+
+    string type() const;
+    void setType(const string &type);
+
+    virtual void show();
+
+
+protected :
+    string _nom;
+    string _auteur;
+    string _id;
+    string _type;
 };
 
 
 #endif // RESSOURCES_H
+
+
+
+
+
 
 

@@ -2,60 +2,54 @@
 
 using namespace std;
 
-string Num::getType() const
-{
-    return type;
-}
 
-void Num::setType(const string &value)
-{
-    type = value;
-}
-
-int Num::getTaille() const
-{
-    return taille;
-}
-
-void Num::setTaille(int value)
-{
-    taille = value;
-}
-
-string Num::getChemin() const
-{
-    return chemin;
-}
-
-void Num::setChemin(const string &value)
-{
-    chemin = value;
-}
-
-Num::Num() : Ressources(), type("N/A"), taille(0), chemin("N/A"){
+Num::Num() : Ressources(){
 
 }
 
-Num::Num(string _nom) : Ressources(_nom), type("N/A"), taille(0), chemin("N/A"){
 
-}
-
-Num::Num(string _nom, string _auteur) : Ressources(_nom, _auteur), type("N/A"), taille(0), chemin("N/A"){
-
-}
-
-Num::Num(string _nom, string _auteur, string _type) : Ressources(_nom, _auteur), type(_type), taille(0), chemin("N/A"){
-
-}
-
-Num::Num(string _nom, string _auteur, string _type, int _taille) : Ressources(_nom, _auteur), type(_type), taille(_taille), chemin("N/A"){
-
-}
-
-Num::Num(string _nom, string _auteur, string _type, int _taille, string _chemin) : Ressources(_nom, _auteur), type(_type), taille(_taille), chemin(_chemin){
-
-}
 
 Num::~Num(){
+
+}
+
+string Num::type() const
+{
+    return _type;
+}
+
+void Num::setType(const string &type)
+{
+    _type = type;
+}
+
+
+
+string Num::chemin() const
+{
+    return _chemin;
+}
+
+void Num::setChemin(const string &chemin)
+{
+    _chemin = chemin;
+}
+
+string Num::taille() const
+{
+    return _taille;
+}
+
+void Num::setTaille(const string &taille)
+{
+    _taille = taille;
+}
+
+void Num::show() {
+
+    Ressources::show();
+    cout << "Type de fichier : " << _type << endl;
+    cout << "Taille du fichier : " << _taille << endl;
+    cout << "Chemin du fichier : " << _chemin << endl;
 
 }

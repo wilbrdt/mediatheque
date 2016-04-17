@@ -5,26 +5,24 @@
 #define REVUE_H
 
 
-class Revue : Livre {
-protected :
-    string editeur;
-    int nArticle;
-    Article* articles[100];
+class Revue : public Livre {
 
 public:
     Revue();
-    Revue(string _nom);
-    Revue(string _nom, string _auteur);
-    Revue(string _nom, string _auteur, int _annee);
-    Revue(string _nom, string _auteur, int _annee, string _resume);
-    Revue(string _nom, string _auteur, int _annee, string _resume, int _nPage);
-    Revue(string _nom, string _auteur, int _annee, string _resume, int _nPage, string _editeur);
-    Revue(string _nom, string _auteur, int _annee, string _resume, int _nPage, string _editeur, int _nArticle);
     ~Revue();
-    string getEditeur() const;
-    void setEditeur(const string &value);
-    int getNArticle() const;
-    void setNArticle(int value);
+
+    string éditeur() const;
+    void setÉditeur(const string &éditeur);
+
+    string nArticle() const;
+    void setNArticle(const string &nArticle);
+
+    virtual void show();
+
+protected :
+    string _éditeur;
+    string _nArticle;
+    //Article* _articles[100];
 };
 
 #endif // REVUE_H

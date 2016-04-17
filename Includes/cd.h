@@ -4,27 +4,28 @@
 #define CD_H
 
 
-class CD :  Ressources
-{
-protected :
-    float duree;
-    int nPiste;
-    string prod;
+class CD : public Ressources {
 
 public:
     CD();
-    CD(string _nom);
-    CD(string _nom, string _auteur);
-    CD(string _nom, string _auteur, float _duree);
-    CD(string _nom, string _auteur, float _duree, int _nPiste);
-    CD(string _nom, string _auteur, float _duree, int _nPiste, string _prod);
     ~CD();
-    float getDuree() const;
-    void setDuree(float value);
-    int getNPiste() const;
-    void setNPiste(int value);
-    string getProd() const;
-    void setProd(const string &value);
+
+
+    string prod() const;
+    void setProd(const string &prod);
+
+    string durée() const;
+    void setDurée(const string &durée);
+
+    string nPiste() const;
+    void setNPiste(const string &nPiste);
+
+    virtual void show();
+
+protected :
+    string _durée;
+    string _nPiste;
+    string _prod;
 };
 
 #endif // CD_H

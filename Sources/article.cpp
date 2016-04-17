@@ -2,37 +2,40 @@
 
 using namespace std;
 
-string Article::getNomArticle() const
-{
-    return nomArticle;
-}
 
-void Article::setNomArticle(const string &value)
-{
-    nomArticle = value;
-}
-
-string Article::getAuteurArticle() const
-{
-    return auteurArticle;
-}
-
-void Article::setAuteurArticle(const string &value)
-{
-    auteurArticle = value;
-}
-
-Article::Article() : nomArticle("N/A"), auteurArticle("N/A"){
-}
-
-Article::Article(string _nomArticle) : nomArticle(_nomArticle), auteurArticle("N/A"){
+Article::Article(){
 
 }
 
-Article::Article(string nomArticle, string _auteurArticle) : nomArticle(nomArticle), auteurArticle(_auteurArticle){
-
-}
 
 Article::~Article(){
+
+}
+
+string Article::nomArticle() const
+{
+    return _nomArticle;
+}
+
+void Article::setNomArticle(const string &nomArticle)
+{
+    _nomArticle = nomArticle;
+}
+
+string Article::auteurArticle() const
+{
+    return _auteurArticle;
+}
+
+void Article::setAuteurArticle(const string &auteurArticle)
+{
+    _auteurArticle = auteurArticle;
+}
+
+void Article::show() {
+
+    //Ressources::show();
+    cout << "Titre de l'article : " << _nomArticle << endl;
+    cout << "Auteur de l'article : " << _auteurArticle << endl;
 
 }

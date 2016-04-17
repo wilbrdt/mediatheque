@@ -6,19 +6,23 @@
 using namespace std;
 
 class Article {
-protected :
-    string nomArticle;
-    string auteurArticle;
 
 public:
     Article();
-    Article(string _nom);
-    Article(string _nom, string _auteur);
     ~Article();
-    string getNomArticle() const;
-    void setNomArticle(const string &value);
-    string getAuteurArticle() const;
-    void setAuteurArticle(const string &value);
+
+    string nomArticle() const;
+    void setNomArticle(const string &nomArticle);
+
+    string auteurArticle() const;
+    void setAuteurArticle(const string &auteurArticle);
+
+    virtual void show();
+
+protected :
+    string _nomArticle;
+    string _auteurArticle;
+
 };
 
 #endif // ARTICLE_H

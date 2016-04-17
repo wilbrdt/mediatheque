@@ -26,6 +26,8 @@ HEADERS += \
     ../Includes/article.h \
     ../Includes/revue.h \
     ../Includes/mediatheque.h \
-    ../Includes/utilisateur.h
+    ../Includes/utilisateur.h \
+    ../Includes/library_string.h \
+    ../Includes/library_string2.h
 
 DISTFILES +=

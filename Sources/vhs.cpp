@@ -2,47 +2,42 @@
 
 using namespace std;
 
-float VHS::getDuree() const
-{
-    return duree;
-}
 
-void VHS::setDuree(float value)
-{
-    duree = value;
-}
-
-string VHS::getProd() const
-{
-    return prod;
-}
-
-void VHS::setProd(const string &value)
-{
-    prod = value;
-}
-
-VHS::VHS() : Ressources(), duree(0), prod("N/A"){
+VHS::VHS() : Ressources(){
 
 }
 
-VHS::VHS(string _nom) : Ressources(_nom), duree(0), prod("N/A"){
-
-}
-
-VHS::VHS(string _nom, string _auteur) : Ressources(_nom, _auteur), duree(0), prod("N/A"){
-
-}
-
-VHS::VHS(string _nom, string _auteur, float _duree) : Ressources(_nom, _auteur), duree(_duree), prod("N/A"){
-
-}
-
-
-VHS::VHS(string _nom, string _auteur, float _duree, string _prod) : Ressources(_nom, _auteur), duree(_duree), prod(_prod){
-
-}
 
 VHS::~VHS(){
+
+}
+
+
+
+string VHS::prod() const
+{
+    return _prod;
+}
+
+void VHS::setProd(const string &prod)
+{
+    _prod = prod;
+}
+
+string VHS::durée() const
+{
+    return _durée;
+}
+
+void VHS::setDurée(const string &durée)
+{
+    _durée = durée;
+}
+
+void VHS::show() {
+
+    Ressources::show();
+    cout << "Durée de la VHS : " << _durée << endl;
+    cout << "Maison de production : " << _prod << endl;
 
 }

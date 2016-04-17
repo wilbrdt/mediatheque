@@ -214,7 +214,9 @@ DIST          = /Users/MacMax/Qt/5.6/clang_64/mkspecs/features/spec_pre.prf \
 		../Includes/article.h \
 		../Includes/revue.h \
 		../Includes/mediatheque.h \
-		../Includes/utilisateur.h ../Sources/main.cpp \
+		../Includes/utilisateur.h \
+		../Includes/library_string.h \
+		../Includes/library_string2.h ../Sources/main.cpp \
 		../Sources/ressouces.cpp \
 		../Sources/livre.cpp \
 		../Sources/cd.cpp \
@@ -552,37 +554,77 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../Sources/main.cpp 
+main.o: ../Sources/main.cpp ../Includes/ressources.h \
+		../Includes/livre.h \
+		../Includes/utilisateur.h \
+		../Includes/mediatheque.h \
+		../Includes/cd.h \
+		../Includes/article.h \
+		../Includes/num.h \
+		../Includes/revue.h \
+		../Includes/vhs.h \
+		../Includes/dvd.h \
+		../Includes/VHS.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Sources/main.cpp
 
-ressouces.o: ../Sources/ressouces.cpp 
+ressouces.o: ../Sources/ressouces.cpp ../Includes/ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ressouces.o ../Sources/ressouces.cpp
 
-livre.o: ../Sources/livre.cpp 
+livre.o: ../Sources/livre.cpp ../Includes/livre.h \
+		../Includes/ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o livre.o ../Sources/livre.cpp
 
-cd.o: ../Sources/cd.cpp 
+cd.o: ../Sources/cd.cpp ../Includes/cd.h \
+		../Includes/ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cd.o ../Sources/cd.cpp
 
-vhs.o: ../Sources/vhs.cpp 
+vhs.o: ../Sources/vhs.cpp ../Includes/VHS.h \
+		../Includes/ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vhs.o ../Sources/vhs.cpp
 
-num.o: ../Sources/num.cpp 
+num.o: ../Sources/num.cpp ../Includes/Num.h \
+		../Includes/ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o num.o ../Sources/num.cpp
 
-dvd.o: ../Sources/dvd.cpp 
+dvd.o: ../Sources/dvd.cpp ../Includes/DVD.h \
+		../Includes/VHS.h \
+		../Includes/ressources.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dvd.o ../Sources/dvd.cpp
 
-article.o: ../Sources/article.cpp 
+article.o: ../Sources/article.cpp ../Includes/Article.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o article.o ../Sources/article.cpp
 
-revue.o: ../Sources/revue.cpp 
+revue.o: ../Sources/revue.cpp ../Includes/Revue.h \
+		../Includes/livre.h \
+		../Includes/ressources.h \
+		../Includes/article.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o revue.o ../Sources/revue.cpp
 
-mediatheque.o: ../Sources/mediatheque.cpp 
+mediatheque.o: ../Sources/mediatheque.cpp ../Includes/mediatheque.h \
+		../Includes/ressources.h \
+		../Includes/livre.h \
+		../Includes/cd.h \
+		../Includes/article.h \
+		../Includes/num.h \
+		../Includes/revue.h \
+		../Includes/vhs.h \
+		../Includes/dvd.h \
+		../Includes/VHS.h \
+		../Includes/library_string2.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mediatheque.o ../Sources/mediatheque.cpp
 
-utilisateur.o: ../Sources/utilisateur.cpp 
+utilisateur.o: ../Sources/utilisateur.cpp ../Includes/utilisateur.h \
+		../Includes/mediatheque.h \
+		../Includes/ressources.h \
+		../Includes/livre.h \
+		../Includes/cd.h \
+		../Includes/article.h \
+		../Includes/num.h \
+		../Includes/revue.h \
+		../Includes/vhs.h \
+		../Includes/dvd.h \
+		../Includes/VHS.h \
+		../Includes/library_string.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utilisateur.o ../Sources/utilisateur.cpp
 
 ####### Install
