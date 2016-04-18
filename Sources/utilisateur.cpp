@@ -36,11 +36,11 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
     }
 
     else if (commande == "CLEAR") {
-        cout << "clear" << endl;
+        currentMed->clear();
     }
 
     else if (commande == "LIST") {
-        cout << "list" << endl;
+        currentMed->list();
     }
 
     else if (commande == "SHOW") {

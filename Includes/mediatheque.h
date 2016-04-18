@@ -49,7 +49,6 @@ protected :
     int _nRessources;
 
     vector <Ressources *> _baseRecherche;
-    bool _recherche;
 };
 
 #endif // MEDIATHEQUE_H

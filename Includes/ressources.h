@@ -25,6 +25,8 @@ public :
 
     virtual void show();
 
+    void list();
+
 
 protected :
     string _nom;

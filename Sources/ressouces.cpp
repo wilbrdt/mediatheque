@@ -59,3 +59,7 @@ void Ressources::show() {
     cout << "Auteur : " << _auteur << endl;
 
 }
+
+void Ressources::list() {
+    cout << _id << " \t - \t " << _type << " \t - \t "  << _nom << " \t - \t "  << _auteur << endl;
+}

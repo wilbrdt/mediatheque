@@ -2,7 +2,6 @@
 #include "../Includes/library_string2.h"
 
 Mediatheque::Mediatheque() {
-    _recherche = false;
 }
 
 Mediatheque::~Mediatheque(){
@@ -325,6 +324,13 @@ void Mediatheque::load(string filename) {
     else  // sinon
       cerr << "Impossible d'ouvrir le fichier !" << endl;
 
+    if(_baseRecherche.empty()) {
+        for (int i =0; i < (int)_baseDonnées.size(); i++) {
+
+            _baseRecherche.push_back((_baseDonnées[i]));
+        }
+    }
+
 }
 
 void Mediatheque::show(string id) {
@@ -628,26 +634,22 @@ void Mediatheque::add(string type) {
 
 void Mediatheque::search(string info) {
 
-    int nRésultat = 0;
+    for (int i =0; i < (int)_baseRecherche.size(); i++) {
 
-    for (int i =0; i < (int)_baseDonnées.size(); i++) {
-
-        string nom = _baseDonnées[i]->nom();
-        string auteur = _baseDonnées[i]->auteur();
-        string type = _baseDonnées[i]->type();
+        string nom = _baseRecherche[i]->nom();
+        string auteur = _baseRecherche[i]->auteur();
+        string type = _baseRecherche[i]->type();
 
         if (type == "Livre") {
             Livre *cp = new Livre();
-            cp = (Livre*) _baseDonnées[i];
+            cp = (Livre*) _baseRecherche[i];
             string année = cp->année();
             string résumé = cp->résumé();
             string nPage = cp->nPage();
 
-            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info)) {
+            if(!(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info))) {
 
-                _baseRecherche.push_back(cp);
-
-                nRésultat++;
+                _baseRecherche.erase(_baseRecherche.begin()+i);
             }
 
 
@@ -655,92 +657,109 @@ void Mediatheque::search(string info) {
 
         else if (type == "CD") {
             CD *cp = new CD();
-            cp = (CD*) _baseDonnées[i];
+            cp = (CD*) _baseRecherche[i];
             string durée = cp->durée();
 
             string nPiste = cp->nPiste();
             string prod = cp->prod();
 
-            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
-
-                _baseRecherche.push_back(cp);
-
-                nRésultat++;
+            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info))) {
+                _baseRecherche.erase(_baseRecherche.begin()+i);
 
             }
         }
 
         else if (type == "VHS") {
             VHS *cp = new VHS();
-            cp = (VHS*) _baseDonnées[i];
+            cp = (VHS*) _baseRecherche[i];
             string durée = cp->durée();
             string prod = cp->prod();
 
-            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(prod, info)) {
-
-                _baseRecherche.push_back(cp);
-
-                nRésultat++;
+            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(prod, info))) {
+                _baseRecherche.erase(_baseRecherche.begin()+i);
             }
         }
 
         else if (type == "DVD") {
             DVD *cp = new DVD();
-            cp = (DVD*) _baseDonnées[i];
+            cp = (DVD*) _baseRecherche[i];
             string durée = cp->durée();
             string nPiste = cp->nPiste();
             string prod = cp->prod();
 
-            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
-
-                _baseRecherche.push_back(cp);
-
-                nRésultat++;
+            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info))) {
+                _baseRecherche.erase(_baseRecherche.begin()+i);
             }
         }
 
         else if (type == "Num") {
             Num *cp = new Num();
-            cp = (Num*) _baseDonnées[i];
+            cp = (Num*) _baseRecherche[i];
             string extension = cp->extension();
             string taille = cp->taille();
             string chemin = cp->chemin();
 
-            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(extension,info) || rechercheString(taille, info) || rechercheString(chemin, info)) {
-
-                _baseRecherche.push_back(cp);
-
-                nRésultat++;
+            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(extension,info) || rechercheString(taille, info) || rechercheString(chemin, info))) {
+                _baseRecherche.erase(_baseRecherche.begin()+i);
             }
         }
 
         else if (type == "Revue") {
             Revue *cp = new Revue();
-            cp = (Revue*) _baseDonnées[i];
+            cp = (Revue*) _baseRecherche[i];
             string année = cp->année();
             string résumé = cp->résumé();
             string nPage = cp->nPage();
             string éditeur = cp->éditeur();
             string nArticle = cp->nArticle();
 
-            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)|| rechercheString(nArticle, info)) {
-
-                _baseRecherche.push_back(cp);
-
-                nRésultat++;
+            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)|| rechercheString(nArticle, info))) {
+                _baseRecherche.erase(_baseRecherche.begin()+i);
             }
         }
 
     }
 
+
     cout << "Recherche effectuée" << endl;
 
-
+    int nRésultat = (int) _baseRecherche.size();
     if (nRésultat > 0) {
-        _recherche = true;
         cout << "Résultats trouvés : " << nRésultat << ". Veuillez inscrire la commande LIST pour les afficher" << endl;
     }
     else
         cout << "Pas de résultat" << endl;
 
+}
+
+void Mediatheque::clear() {
+
+    while(!_baseRecherche.empty()) {
+        delete _baseRecherche.back();
+        _baseRecherche.pop_back();
+    }
+    if(_baseRecherche.empty()) {
+        for (int i =0; i < (int)_baseDonnées.size(); i++) {
+
+            _baseRecherche.push_back((_baseDonnées[i]));
+        }
+    }
+
+    cout << "La base de recherche a été réinitialisée" << endl;
+}
+
+void Mediatheque::list() {
+
+    if(_baseDonnées.size() == _baseRecherche.size())
+        cout << "La médiathèque contient : " << _baseRecherche.size() << " ressources." << endl;
+
+    else
+        cout << "La recherche précédente a donné : " << _baseRecherche.size() << " résultat(s)" << endl;
+
+    cout << "Voici la liste :" << endl;
+    cout << "ID \t - \t - Type \t - \t Nom \t - \t - Auteur" << endl;
+
+    for (int i =0; i < (int)_baseRecherche.size(); i++) {
+        _baseRecherche[i]->list();
+    }
 }

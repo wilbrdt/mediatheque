@@ -10,10 +10,10 @@ int main() {
     string action;
     Mediatheque *currentMed = new Mediatheque();
 
-//    cout << endl << "Bienvenue dans la bibliothèque de Babel" << endl << endl << "Quel est votre nom ?" << endl;
-//    getline(cin,nomUtilisateur);
-//    user.setNomUtilisateur(nomUtilisateur);
-//    cout << endl << "Bonjour " << user.nomUtilisateur() << endl;
+    cout << endl << "Bienvenue dans la bibliothèque de Babel" << endl << endl << "Quel est votre nom ?" << endl;
+    getline(cin,nomUtilisateur);
+    user.setNomUtilisateur(nomUtilisateur);
+    cout << endl << "Bonjour " << user.nomUtilisateur() << endl;
 
     while(true) {
         cout << endl << "Quelle action souhaitez-vous effectuer ?" << endl;

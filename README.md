@@ -8,12 +8,12 @@ Done (18/04):
 	- La classe médiathèque
 	- La classe utilisateur
 	- Interface utilisateur en version console
-	- Implémentation de commandes : load, bye, reset, show, delete, save, add, search
+	- Implémentation de commandes : load, bye, reset, show, delete, save, add, search, clear, list
 
 	***Application fonctionnelle avec les points cités précédemment***
 
 To do :
-	- Commandes clear, list
+	- un pb repéré grâce à list, à voir où il est
 	- Classe revue et article
 	- _nRessources non utile, on peut juste regarder la taille du vector _baseDonnées
 	- vérifier de bien delete les cp et tmp des fonctions
