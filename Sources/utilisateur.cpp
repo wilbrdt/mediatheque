@@ -20,7 +20,7 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
     }
 
     else if (commande == "ADD") {
-        cout << "ajout" << endl;
+        currentMed->add(complément);
     }
 
     else if (commande == "LOAD") {

@@ -9,9 +9,8 @@ public :
     Num();
     ~Num();
 
-
-    string type() const;
-    void setType(const string &type);
+    string extension() const;
+    void setExtension(const string &type);
 
     string chemin() const;
     void setChemin(const string &chemin);
@@ -22,7 +21,7 @@ public :
     virtual void show();
 
 protected :
-    string _type;
+    string _extension;
     string _taille;
     string _chemin;
 

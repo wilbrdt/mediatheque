@@ -13,14 +13,14 @@ Num::~Num(){
 
 }
 
-string Num::type() const
+string Num::extension() const
 {
-    return _type;
+    return _extension;
 }
 
-void Num::setType(const string &type)
+void Num::setExtension(const string &extension)
 {
-    _type = type;
+    _extension = extension;
 }
 
 
@@ -48,7 +48,7 @@ void Num::setTaille(const string &taille)
 void Num::show() {
 
     Ressources::show();
-    cout << "Type de fichier : " << _type << endl;
+    cout << "Type de fichier : " << _extension << endl;
     cout << "Taille du fichier : " << _taille << endl;
     cout << "Chemin du fichier : " << _chemin << endl;
 

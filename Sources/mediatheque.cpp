@@ -252,7 +252,7 @@ void Mediatheque::load(string filename) {
                 ressource->setAuteur(auteur);
                 ressource->setType(type);
 
-                ressource->setType(extension);
+                ressource->setExtension(extension);
                 ressource->setTaille(taille);
                 ressource->setChemin(chemin);
                 _baseDonnées.push_back(ressource);
@@ -373,7 +373,8 @@ void Mediatheque::deleteId(string id) {
     if (_baseDonnées[i]->id() == id) {
         delete _baseDonnées[i];
         _baseDonnées.erase(_baseDonnées.begin()+i);
-            cout << "La ressource " << id << " a bien été effacée de la médiathèque" << endl;
+        _nRessources--;
+        cout << "La ressource " << id << " a bien été effacée de la médiathèque" << endl;
     }
 
     else if (i == (int)_baseDonnées.size()) {
@@ -444,4 +445,184 @@ void Mediatheque::save(string filename) {
 
     else  // sinon
         cerr << "Erreur à l'ouverture !" << endl;
+}
+
+void Mediatheque::add(string type) {
+
+    _nRessources++;
+    string id = to_string((stoi((_baseDonnées.back())->id()))+1);
+
+    string ligne;
+    string nom;
+    string auteur;
+
+    cout << "Quel est le nom de la ressource ?" << endl;
+    getline(cin,nom);
+    cout << "Qui est l'auteur de la ressource ?" << endl;
+    getline(cin,auteur);
+
+    if (type == "Livre") {
+        Livre *ressource = new Livre();
+        ressource->setId(id);
+        ressource->setType(type);
+        ressource->setNom(nom);
+        ressource->setAuteur(auteur);
+
+        string année;
+        string résumé;
+        string nPage;
+
+        cout << "Quelle est l'année de parution du livre ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,année);
+        cout << "Veuillez donner un résumé du livre (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,résumé);
+        cout << "Quel est le nombre de page du livre ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,nPage);
+
+        ressource->setAnnée(année);
+        ressource->setRésumé(résumé);
+        ressource->setNPage(nPage);
+
+        _baseDonnées.push_back(ressource);
+    }
+
+    else if (type == "CD") {
+        CD *ressource = new CD();
+        ressource->setId(id);
+        ressource->setType(type);
+        ressource->setNom(nom);
+        ressource->setAuteur(auteur);
+
+        string durée;
+        string nPiste;
+        string prod;
+
+        cout << "Quelle est la durée du CD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,durée);
+        cout << "Combien de piste il y a t-il sur le CD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,nPiste);
+        cout << "Quelle est le nom de la maison de production du CD? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,prod);
+
+        ressource->setDurée(durée);
+        ressource->setNPiste(nPiste);
+        ressource->setProd(prod);
+
+        _baseDonnées.push_back(ressource);
+    }
+
+    else if (type == "VHS") {
+        VHS *ressource = new VHS();
+        ressource->setId(id);
+        ressource->setType(type);
+        ressource->setNom(nom);
+        ressource->setAuteur(auteur);
+
+        string durée;
+        string nPiste;
+        string prod;
+
+        cout << "Quelle est la durée de la VHS ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,durée);
+        cout << "Quelle est le nom de la maison de production de la VHS? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,prod);
+
+        ressource->setDurée(durée);
+        ressource->setProd(prod);
+
+        _baseDonnées.push_back(ressource);
+    }
+
+    else if (type == "DVD") {
+        DVD *ressource = new DVD();
+        ressource->setId(id);
+
+        ressource->setType(type);
+        ressource->setNom(nom);
+        ressource->setAuteur(auteur);
+
+        string durée;
+        string prod;
+        string nPiste;
+
+        cout << "Quelle est la durée du DVD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,durée);
+        cout << "Quelle est le nom de la maison de production du DVD? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,prod);
+        cout << "Combien de piste il y a t-il sur le DVD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,nPiste);
+
+        ressource->setDurée(durée);
+        ressource->setProd(prod);
+        ressource->setNPiste(nPiste);
+
+        _baseDonnées.push_back(ressource);
+    }
+
+    else if (type == "Num") {
+        Num *ressource = new Num();
+        ressource->setId(id);
+
+        ressource->setType(type);
+        ressource->setNom(nom);
+        ressource->setAuteur(auteur);
+
+        string extension;
+        string taille;
+        string chemin;
+
+        cout << "Quel est le type de la ressource numérique ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,extension);
+        cout << "Quelle est la taille de la ressource numérique (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,taille);
+        cout << "Quel est le chemin de la ressource numérique ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,chemin);
+
+        ressource->setExtension(extension);
+        ressource->setTaille(taille);
+        ressource->setChemin(chemin);
+
+        _baseDonnées.push_back(ressource);
+    }
+
+    else if (type == "Revue") {
+        Revue *ressource = new Revue();
+
+        ressource->setId(id);
+
+        ressource->setType(type);
+        ressource->setNom(nom);
+        ressource->setAuteur(auteur);
+
+        string année;
+        string résumé;
+        string nPage;
+
+        cout << "Quelle est l'année de parution de la revue ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,année);
+        cout << "Veuillez donner un résumé de la revue (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,résumé);
+        cout << "Quel est le nombre de page de la revue ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,nPage);
+
+        ressource->setAnnée(année);
+        ressource->setRésumé(résumé);
+        ressource->setNPage(nPage);
+
+        string éditeur;
+        string nArticle;
+
+        cout << "Quel est le nom de l'éditeur de la revue (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,éditeur);
+        cout << "Quel est le nombre d' article de la revue ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,nArticle);
+
+        ressource->setÉditeur(éditeur);
+        ressource->setNArticle(nArticle);
+
+        _baseDonnées.push_back(ressource);
+    }
+
+    cout << "La ressource " << nom << " avec l'id : " << id << " a bien été ajoutée à la médiathèque " << _nomMed << endl;
+
 }
