@@ -18,4 +18,29 @@ string découpageMot(string ligne) {
     return mot;
 }
 
+bool rechercheString(string chaine, string compare) {
+
+    int taille = chaine.size();
+    string newChaine;
+    char c;
+
+    for (int i =0; i < taille; i++) {
+        c = toupper(chaine[i]);
+        newChaine.push_back(c);
+    }
+
+    taille = compare.size();
+    string newCompare;
+
+    for (int i =0; i < taille; i++) {
+        c = toupper(compare[i]);
+        newCompare.push_back(c);
+    }
+
+    if(newChaine.find(newCompare) != string::npos)
+        return true;
+    else
+        return false;
+}
+
 #endif // LIBRARY_STRING2_H

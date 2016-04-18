@@ -47,6 +47,9 @@ protected :
     string _nomMed;
     vector<Ressources *> _baseDonnées;
     int _nRessources;
+
+    vector <Ressources *> _baseRecherche;
+    bool _recherche;
 };
 
 #endif // MEDIATHEQUE_H

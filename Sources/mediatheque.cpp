@@ -2,7 +2,7 @@
 #include "../Includes/library_string2.h"
 
 Mediatheque::Mediatheque() {
-
+    _recherche = false;
 }
 
 Mediatheque::~Mediatheque(){
@@ -519,7 +519,6 @@ void Mediatheque::add(string type) {
         ressource->setAuteur(auteur);
 
         string durée;
-        string nPiste;
         string prod;
 
         cout << "Quelle est la durée de la VHS ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
@@ -624,5 +623,124 @@ void Mediatheque::add(string type) {
     }
 
     cout << "La ressource " << nom << " avec l'id : " << id << " a bien été ajoutée à la médiathèque " << _nomMed << endl;
+
+}
+
+void Mediatheque::search(string info) {
+
+    int nRésultat = 0;
+
+    for (int i =0; i < (int)_baseDonnées.size(); i++) {
+
+        string nom = _baseDonnées[i]->nom();
+        string auteur = _baseDonnées[i]->auteur();
+        string type = _baseDonnées[i]->type();
+
+        if (type == "Livre") {
+            Livre *cp = new Livre();
+            cp = (Livre*) _baseDonnées[i];
+            string année = cp->année();
+            string résumé = cp->résumé();
+            string nPage = cp->nPage();
+
+            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info)) {
+
+                _baseRecherche.push_back(cp);
+
+                nRésultat++;
+            }
+
+
+        }
+
+        else if (type == "CD") {
+            CD *cp = new CD();
+            cp = (CD*) _baseDonnées[i];
+            string durée = cp->durée();
+
+            string nPiste = cp->nPiste();
+            string prod = cp->prod();
+
+            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
+
+                _baseRecherche.push_back(cp);
+
+                nRésultat++;
+
+            }
+        }
+
+        else if (type == "VHS") {
+            VHS *cp = new VHS();
+            cp = (VHS*) _baseDonnées[i];
+            string durée = cp->durée();
+            string prod = cp->prod();
+
+            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(prod, info)) {
+
+                _baseRecherche.push_back(cp);
+
+                nRésultat++;
+            }
+        }
+
+        else if (type == "DVD") {
+            DVD *cp = new DVD();
+            cp = (DVD*) _baseDonnées[i];
+            string durée = cp->durée();
+            string nPiste = cp->nPiste();
+            string prod = cp->prod();
+
+            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
+
+                _baseRecherche.push_back(cp);
+
+                nRésultat++;
+            }
+        }
+
+        else if (type == "Num") {
+            Num *cp = new Num();
+            cp = (Num*) _baseDonnées[i];
+            string extension = cp->extension();
+            string taille = cp->taille();
+            string chemin = cp->chemin();
+
+            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(extension,info) || rechercheString(taille, info) || rechercheString(chemin, info)) {
+
+                _baseRecherche.push_back(cp);
+
+                nRésultat++;
+            }
+        }
+
+        else if (type == "Revue") {
+            Revue *cp = new Revue();
+            cp = (Revue*) _baseDonnées[i];
+            string année = cp->année();
+            string résumé = cp->résumé();
+            string nPage = cp->nPage();
+            string éditeur = cp->éditeur();
+            string nArticle = cp->nArticle();
+
+            if( rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)|| rechercheString(nArticle, info)) {
+
+                _baseRecherche.push_back(cp);
+
+                nRésultat++;
+            }
+        }
+
+    }
+
+    cout << "Recherche effectuée" << endl;
+
+
+    if (nRésultat > 0) {
+        _recherche = true;
+        cout << "Résultats trouvés : " << nRésultat << ". Veuillez inscrire la commande LIST pour les afficher" << endl;
+    }
+    else
+        cout << "Pas de résultat" << endl;
 
 }

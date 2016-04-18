@@ -32,7 +32,7 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
     }
 
     else if (commande == "SEARCH") {
-        cout << "search" << endl;
+        currentMed->search(complément);
     }
 
     else if (commande == "CLEAR") {
