@@ -757,7 +757,7 @@ void Mediatheque::list() {
         cout << "La recherche précédente a donné : " << _baseRecherche.size() << " résultat(s)" << endl;
 
     cout << "Voici la liste :" << endl;
-    cout << "ID \t - \t - Type \t - \t Nom \t - \t - Auteur" << endl;
+    cout << "ID \t - \t Type \t - \t Nom \t - \t Auteur" << endl;
 
     for (int i =0; i < (int)_baseRecherche.size(); i++) {
         _baseRecherche[i]->list();
