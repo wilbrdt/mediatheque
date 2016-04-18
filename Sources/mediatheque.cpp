@@ -326,8 +326,18 @@ void Mediatheque::load(string filename) {
 }
 
 void Mediatheque::show(string id) {
-    int ID = stoi(id);
-    _baseDonnées[(ID-1)]->show();
+    int i = 0;
+    while( i < (int)_baseDonnées.size() && _baseDonnées[i]->id() != id) {
+        i++;
+    }
+
+    if (_baseDonnées[i]->id() == id) {
+        _baseDonnées[i]->show();
+    }
+
+    else if (i == (int)_baseDonnées.size()) {
+        cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
+    }
 }
 
 void Mediatheque::bye() {
@@ -353,8 +363,19 @@ void Mediatheque::reset() {
 
 void Mediatheque::deleteId(string id) {
 
-    int ID = stoi(id);
-    delete _baseDonnées[ID-1];
+    int i = 0;
+    while( i < (int)_baseDonnées.size() && _baseDonnées[i]->id() != id) {
+        i++;
+    }
 
-    cout << "La ressource " << id << " a bien été effacée de la médiathèque" << endl;
+    if (_baseDonnées[i]->id() == id) {
+        delete _baseDonnées[i];
+        _baseDonnées.erase(_baseDonnées.begin()+i);
+            cout << "La ressource " << id << " a bien été effacée de la médiathèque" << endl;
+    }
+
+    else if (i == (int)_baseDonnées.size()) {
+        cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
+    }
+
 }
