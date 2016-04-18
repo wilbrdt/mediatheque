@@ -33,7 +33,7 @@ public:
     void help();
     void add(string type);
     void load(string filename);
-    void save(char *filename);
+    void save(string filename);
     void search(string recherche);
     void clear();
     void reset();

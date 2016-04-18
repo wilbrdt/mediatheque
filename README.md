@@ -8,12 +8,12 @@ Done (18/04):
 	- La classe médiathèque
 	- La classe utilisateur
 	- Interface utilisateur en version console
-	- Implémentation de commandes : load, bye, reset, show, delete
+	- Implémentation de commandes : load, bye, reset, show, delete, save
 
 	***Application fonctionnelle avec les points cités précédemment***
 
 To do :
-	- Commandes add, save, search, clear, list
+	- Commandes add, search, clear, list
 	- Classe revue et article
 	
 

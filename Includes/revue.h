@@ -11,7 +11,7 @@ public:
     Revue();
     ~Revue();
 
-    string éditeur() const;
+    virtual string éditeur() const;
     void setÉditeur(const string &éditeur);
 
     string nArticle() const;

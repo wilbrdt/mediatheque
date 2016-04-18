@@ -10,7 +10,7 @@ public :
     void afficheInfos(); //fonction de test
     ~Livre();
 
-    virtual string année() const;
+    string année() const;
     void setAnnée(const string &année);
 
     string résumé() const;

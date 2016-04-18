@@ -28,7 +28,7 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
     }
 
     else if (commande == "SAVE") {
-        cout << "save" << endl;
+        currentMed->save(complément);
     }
 
     else if (commande == "SEARCH") {

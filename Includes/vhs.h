@@ -10,7 +10,7 @@ public:
     VHS();
     ~VHS();
 
-    string prod() const;
+    virtual string prod() const;
     void setProd(const string &prod);
 
     string durée() const;

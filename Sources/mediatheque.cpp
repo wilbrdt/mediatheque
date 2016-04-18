@@ -31,6 +31,8 @@ void Mediatheque::setNRessources(int nRessources)
 
 void Mediatheque::load(string filename) {
 
+    reset();
+
     string file = filename + ".txt";
 
     _nRessources = 0;
@@ -378,4 +380,68 @@ void Mediatheque::deleteId(string id) {
         cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
     }
 
+}
+
+void Mediatheque::save(string filename) {
+
+    string file = filename + ".txt";
+    string séparateur = " *=* ";
+    string type;
+
+    ofstream fichier(file, ios::out | ios::trunc);  // on ouvre le fichier en lecture
+
+    if(fichier) {  // si l'ouverture a réussi
+
+        for (int i =0; i < (int)_baseDonnées.size(); i++) {
+
+            type = _baseDonnées[i]->type();
+
+            fichier << _baseDonnées[i]->id() << séparateur << type << séparateur << _baseDonnées[i]->nom() << séparateur << _baseDonnées[i]->auteur() << séparateur;
+
+            if (type == "Livre") {
+                Livre *cp = new Livre();
+                cp = (Livre*) _baseDonnées[i];
+                fichier << cp->année() << séparateur << cp->résumé() << séparateur << cp->nPage();
+            }
+
+            else if (type == "CD") {
+                CD *cp = new CD();
+                cp = (CD*) _baseDonnées[i];
+                fichier << cp->durée() << séparateur << cp->nPiste() << séparateur << cp->prod();
+            }
+
+            else if (type == "VHS") {
+                VHS *cp = new VHS();
+                cp = (VHS*) _baseDonnées[i];
+                fichier << cp->durée() << séparateur << cp->prod();
+            }
+
+            else if (type == "DVD") {
+                DVD *cp = new DVD();
+                cp = (DVD*) _baseDonnées[i];
+                fichier << cp->durée() << séparateur << cp->prod() << séparateur << cp->nPiste();
+            }
+
+            else if (type == "Num") {
+                Num *cp = new Num();
+                cp = (Num*) _baseDonnées[i];
+                fichier << cp->type() << séparateur << cp->taille() << séparateur << cp->chemin();
+            }
+
+            else if (type == "Revue") {
+                Revue *cp = new Revue();
+                cp = (Revue*) _baseDonnées[i];
+                fichier << cp->éditeur() << séparateur << cp->nArticle();
+            }
+
+            fichier << endl;
+        }
+
+        fichier.close();
+
+        cout << "La médiathèque " << _nomMed << " actuellement chargée, a bien été sauvegardée dans le fichier " << file << endl;
+    }
+
+    else  // sinon
+        cerr << "Erreur à l'ouverture !" << endl;
 }
