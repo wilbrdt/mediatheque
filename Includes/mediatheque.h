@@ -29,7 +29,7 @@ public:
     int nRessources() const;
     void setNRessources(int nRessources);
 
-    void bye();
+    void bye() __attribute__ ((noreturn));
     void help();
     void add(string type);
     void load(string filename);

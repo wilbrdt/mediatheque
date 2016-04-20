@@ -6,34 +6,34 @@
 using namespace std;
 
 string découpageLigne(string ligne) {
-    int pos = ligne.find(" *=* ");
-    int tailleLigne = ligne.size();
+    unsigned pos = static_cast<unsigned>(ligne.find(" *=* "));
+    unsigned tailleLigne = static_cast<unsigned>(ligne.size());
     string newLigne = ligne.substr(pos+5,tailleLigne-(pos+5));
     return newLigne;
 }
 
 string découpageMot(string ligne) {
-    int pos = ligne.find(" *=* ");
+    unsigned pos = static_cast<unsigned>(ligne.find(" *=* "));
     string mot = ligne.substr(0,pos);
     return mot;
 }
 
 bool rechercheString(string chaine, string compare) {
 
-    int taille = chaine.size();
+    unsigned taille = static_cast<unsigned>(chaine.size());
     string newChaine;
     char c;
 
-    for (int i =0; i < taille; i++) {
-        c = toupper(chaine[i]);
+    for (unsigned i =0; i < taille; i++) {
+        c = static_cast<char>(toupper(chaine[i]));
         newChaine.push_back(c);
     }
 
-    taille = compare.size();
+    taille = static_cast<unsigned>(compare.size());
     string newCompare;
 
-    for (int i =0; i < taille; i++) {
-        c = toupper(compare[i]);
+    for (unsigned i =0; i < taille; i++) {
+        c = static_cast<char>(toupper(compare[i]));
         newCompare.push_back(c);
     }
 

@@ -1,6 +1,0 @@
-1 *=* Livre *=* E-penser *=* Bruce Benamran  *=* 2015 *=* Science *=* 1000
-2 *=* VHS *=* Star Wars *=* Georges Lucas *=* 120 *=* Lucasfilm
-3 *=* CD *=* Unplugged *=* Eric Clapton  *=* 90 *=* 12 *=* Columbia
-4 *=* DVD *=* Pulp Fiction *=* Quentin Tarantino  *=* 120 *=* OMG *=* 12
-5 *=* Num *=* Netflix *=* Netflix  *=* Num *=* 1000 *=* http://netflix.com
-6 *=* DVD *=* Unknown Movies *=* Victor Bonnefoy *=* 179 minutes *=* InThePanda *=* 18

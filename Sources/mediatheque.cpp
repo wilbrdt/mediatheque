@@ -325,7 +325,7 @@ void Mediatheque::load(string filename) {
       cerr << "Impossible d'ouvrir le fichier !" << endl;
 
     if(_baseRecherche.empty()) {
-        for (int i =0; i < (int)_baseDonnées.size(); i++) {
+        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {
 
             _baseRecherche.push_back((_baseDonnées[i]));
         }
@@ -334,8 +334,8 @@ void Mediatheque::load(string filename) {
 }
 
 void Mediatheque::show(string id) {
-    int i = 0;
-    while( i < (int)_baseDonnées.size() && _baseDonnées[i]->id() != id) {
+    unsigned i = 0;
+    while( i < static_cast<unsigned>(_baseDonnées.size())  && _baseDonnées[i]->id() != id) {
         i++;
     }
 
@@ -343,7 +343,7 @@ void Mediatheque::show(string id) {
         _baseDonnées[i]->show();
     }
 
-    else if (i == (int)_baseDonnées.size()) {
+    else if (i == (static_cast<unsigned>(_baseDonnées.size()))) {
         cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
     }
 }
@@ -355,35 +355,56 @@ void Mediatheque::bye() {
         _baseDonnées.pop_back();
     }
 
+    while(!_baseRecherche.empty()) {
+        delete _baseRecherche.back();
+        _baseRecherche.pop_back();
+    }
+
+    _baseDonnées.clear();
+    _baseRecherche.clear();
+
     cout << "Au revoir" << endl;
-    exit(0);
+    exit(1);
 }
 
 void Mediatheque::reset() {
 
-    while(!_baseDonnées.empty()) {
-        delete _baseDonnées.back();
-        _baseDonnées.pop_back();
-    }
+//    while(!_baseDonnées.empty()) {
+//        delete _baseDonnées.back();
+//        _baseDonnées.pop_back();
+//    }
+
+    _baseDonnées.clear();
+    _baseRecherche.clear();
 
     cout << "Toutes les ressources ont été supprimées de la médiathèque " << _nomMed << endl;
 }
 
 void Mediatheque::deleteId(string id) {
 
-    int i = 0;
-    while( i < (int)_baseDonnées.size() && _baseDonnées[i]->id() != id) {
+    unsigned i = 0;
+    while( i < static_cast<unsigned>(_baseDonnées.size()) && _baseDonnées[i]->id() != id) {
         i++;
     }
 
     if (_baseDonnées[i]->id() == id) {
-        delete _baseDonnées[i];
         _baseDonnées.erase(_baseDonnées.begin()+i);
         _nRessources--;
+
+        while( i < static_cast<unsigned>(_baseRecherche.size()) && _baseRecherche[i]->id() != id) {
+            i++;
+        }
+
+        if (_baseRecherche[i]->id() == id) {
+            _baseRecherche.erase(_baseRecherche.begin()+i);
+        }
+
         cout << "La ressource " << id << " a bien été effacée de la médiathèque" << endl;
     }
 
-    else if (i == (int)_baseDonnées.size()) {
+
+
+    else if (i == static_cast<unsigned>(_baseDonnées.size())) {
         cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
     }
 
@@ -399,7 +420,7 @@ void Mediatheque::save(string filename) {
 
     if(fichier) {  // si l'ouverture a réussi
 
-        for (int i =0; i < (int)_baseDonnées.size(); i++) {
+        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {
 
             type = _baseDonnées[i]->type();
 
@@ -407,37 +428,37 @@ void Mediatheque::save(string filename) {
 
             if (type == "Livre") {
                 Livre *cp = new Livre();
-                cp = (Livre*) _baseDonnées[i];
+                cp = dynamic_cast<Livre*>(_baseDonnées[i]) ;
                 fichier << cp->année() << séparateur << cp->résumé() << séparateur << cp->nPage();
             }
 
             else if (type == "CD") {
                 CD *cp = new CD();
-                cp = (CD*) _baseDonnées[i];
+                cp = dynamic_cast<CD*>(_baseDonnées[i]) ;
                 fichier << cp->durée() << séparateur << cp->nPiste() << séparateur << cp->prod();
             }
 
             else if (type == "VHS") {
                 VHS *cp = new VHS();
-                cp = (VHS*) _baseDonnées[i];
+                cp = dynamic_cast<VHS*>(_baseDonnées[i]) ;
                 fichier << cp->durée() << séparateur << cp->prod();
             }
 
             else if (type == "DVD") {
                 DVD *cp = new DVD();
-                cp = (DVD*) _baseDonnées[i];
+                cp = dynamic_cast<DVD*>(_baseDonnées[i]) ;
                 fichier << cp->durée() << séparateur << cp->prod() << séparateur << cp->nPiste();
             }
 
             else if (type == "Num") {
                 Num *cp = new Num();
-                cp = (Num*) _baseDonnées[i];
+                cp = dynamic_cast<Num*>(_baseDonnées[i]) ;
                 fichier << cp->type() << séparateur << cp->taille() << séparateur << cp->chemin();
             }
 
             else if (type == "Revue") {
                 Revue *cp = new Revue();
-                cp = (Revue*) _baseDonnées[i];
+                cp = dynamic_cast<Revue*>(_baseDonnées[i]) ;
                 fichier << cp->éditeur() << séparateur << cp->nArticle();
             }
 
@@ -634,87 +655,88 @@ void Mediatheque::add(string type) {
 
 void Mediatheque::search(string info) {
 
-    for (int i =0; i < (int)_baseRecherche.size(); i++) {
+    vector <Ressources*> baseRechercheTmp;
+
+    for (unsigned i =0; i < static_cast<unsigned>(_baseRecherche.size()); i++) {
 
         string nom = _baseRecherche[i]->nom();
         string auteur = _baseRecherche[i]->auteur();
         string type = _baseRecherche[i]->type();
+        string id = _baseRecherche[i]->id();
 
         if (type == "Livre") {
             Livre *cp = new Livre();
-            cp = (Livre*) _baseRecherche[i];
+            cp = dynamic_cast<Livre*>(_baseRecherche[i]);
             string année = cp->année();
             string résumé = cp->résumé();
             string nPage = cp->nPage();
 
-            if(!(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info))) {
-
-                _baseRecherche.erase(_baseRecherche.begin()+i);
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info)) {
+                baseRechercheTmp.push_back(_baseRecherche[i]);
             }
-
-
         }
 
         else if (type == "CD") {
             CD *cp = new CD();
-            cp = (CD*) _baseRecherche[i];
+            cp = dynamic_cast<CD*>(_baseRecherche[i]);
             string durée = cp->durée();
 
             string nPiste = cp->nPiste();
             string prod = cp->prod();
 
-            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info))) {
-                _baseRecherche.erase(_baseRecherche.begin()+i);
-
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
+                baseRechercheTmp.push_back(_baseRecherche[i]);
             }
         }
 
         else if (type == "VHS") {
+
             VHS *cp = new VHS();
-            cp = (VHS*) _baseRecherche[i];
+            cp = dynamic_cast<VHS*>(_baseRecherche[i]);
             string durée = cp->durée();
             string prod = cp->prod();
 
-            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(prod, info))) {
-                _baseRecherche.erase(_baseRecherche.begin()+i);
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(prod, info)) {
+                baseRechercheTmp.push_back(_baseRecherche[i]);
             }
         }
 
         else if (type == "DVD") {
             DVD *cp = new DVD();
-            cp = (DVD*) _baseRecherche[i];
+            cp = dynamic_cast<DVD*>(_baseRecherche[i]);
             string durée = cp->durée();
             string nPiste = cp->nPiste();
             string prod = cp->prod();
 
-            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info))) {
-                _baseRecherche.erase(_baseRecherche.begin()+i);
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
+                baseRechercheTmp.push_back(_baseRecherche[i]);
             }
+
         }
 
         else if (type == "Num") {
             Num *cp = new Num();
-            cp = (Num*) _baseRecherche[i];
+            cp = dynamic_cast<Num*>(_baseRecherche[i]);
             string extension = cp->extension();
             string taille = cp->taille();
             string chemin = cp->chemin();
 
-            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(extension,info) || rechercheString(taille, info) || rechercheString(chemin, info))) {
-                _baseRecherche.erase(_baseRecherche.begin()+i);
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(extension,info) || rechercheString(taille, info) || rechercheString(chemin, info)) {
+               baseRechercheTmp.push_back(_baseRecherche[i]);
             }
         }
 
         else if (type == "Revue") {
             Revue *cp = new Revue();
-            cp = (Revue*) _baseRecherche[i];
+            cp =dynamic_cast<Revue*>(_baseRecherche[i]);
             string année = cp->année();
             string résumé = cp->résumé();
             string nPage = cp->nPage();
             string éditeur = cp->éditeur();
             string nArticle = cp->nArticle();
 
-            if( !(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)|| rechercheString(nArticle, info))) {
-                _baseRecherche.erase(_baseRecherche.begin()+i);
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)|| rechercheString(nArticle, info)) {
+               baseRechercheTmp.push_back(_baseRecherche[i]);
             }
         }
 
@@ -723,27 +745,32 @@ void Mediatheque::search(string info) {
 
     cout << "Recherche effectuée" << endl;
 
-    int nRésultat = (int) _baseRecherche.size();
+    _baseRecherche.clear();
+    cout << baseRechercheTmp.size() << endl;
+
+    for(unsigned i = 0 ; i < baseRechercheTmp.size(); i++) {
+        _baseRecherche.push_back(baseRechercheTmp[i]);
+    }
+
+    baseRechercheTmp.clear();
+
+    unsigned nRésultat = static_cast<unsigned>(_baseRecherche.size());
     if (nRésultat > 0) {
         cout << "Résultats trouvés : " << nRésultat << ". Veuillez inscrire la commande LIST pour les afficher" << endl;
     }
     else
         cout << "Pas de résultat" << endl;
-
 }
 
 void Mediatheque::clear() {
 
-    while(!_baseRecherche.empty()) {
-        delete _baseRecherche.back();
-        _baseRecherche.pop_back();
-    }
-    if(_baseRecherche.empty()) {
-        for (int i =0; i < (int)_baseDonnées.size(); i++) {
+    _baseRecherche.clear();
 
-            _baseRecherche.push_back((_baseDonnées[i]));
-        }
+    for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {
+
+        _baseRecherche.push_back((_baseDonnées[i]));
     }
+
 
     cout << "La base de recherche a été réinitialisée" << endl;
 }
@@ -759,7 +786,7 @@ void Mediatheque::list() {
     cout << "Voici la liste :" << endl;
     cout << "ID \t - \t Type \t - \t Nom \t - \t Auteur" << endl;
 
-    for (int i =0; i < (int)_baseRecherche.size(); i++) {
+    for (unsigned  i =0; i < static_cast<unsigned>(_baseRecherche.size()); i++) {
         _baseRecherche[i]->list();
     }
 }

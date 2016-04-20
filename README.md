@@ -13,8 +13,6 @@ Done (18/04):
 	***Application fonctionnelle avec les points cités précédemment***
 
 To do :
-	- un pb repéré grâce à list, à voir où il est 
-		EDIT : un pb sur le search et un sur le clear
 	- Classe revue et article
 	- _nRessources non utile, on peut juste regarder la taille du vector _baseDonnées
 	- vérifier de bien delete les cp et tmp des fonctions
