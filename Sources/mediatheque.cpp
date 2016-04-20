@@ -18,23 +18,12 @@ void Mediatheque::setNomMed(const string &nomMed)
     _nomMed = nomMed;
 }
 
-int Mediatheque::nRessources() const
-{
-    return _nRessources;
-}
-
-void Mediatheque::setNRessources(int nRessources)
-{
-    _nRessources = nRessources;
-}
-
 void Mediatheque::load(string filename) {
 
     reset();
 
     string file = filename + ".txt";
-
-    _nRessources = 0;
+    int nRessources = 0;
     _nomMed = filename;
 
     string ligne;
@@ -45,8 +34,8 @@ void Mediatheque::load(string filename) {
 
         while(getline(fichier, ligne)) {
 
+            nRessources++;
             string mot;
-
             string id;
             string type;
             string nom;
@@ -109,8 +98,6 @@ void Mediatheque::load(string filename) {
                 ressource->setNPage(nPage);
                 _baseDonnées.push_back(ressource);
 
-                _nRessources++;
-
             }
 
             else if (type == "CD") {
@@ -146,8 +133,6 @@ void Mediatheque::load(string filename) {
                 ressource->setProd(prod);
                 _baseDonnées.push_back(ressource);
 
-                _nRessources++;
-
             }
 
             else if (type == "VHS") {
@@ -177,10 +162,6 @@ void Mediatheque::load(string filename) {
                 ressource->setDurée(durée);
                 ressource->setProd(prod);
                 _baseDonnées.push_back(ressource);
-
-                _nRessources++;
-
-
 
             }
 
@@ -218,9 +199,6 @@ void Mediatheque::load(string filename) {
                 ressource->setNPiste(nPiste);
                 _baseDonnées.push_back(ressource);
 
-                _nRessources++;
-
-
             }
 
             else if (type == "Num") {
@@ -255,8 +233,6 @@ void Mediatheque::load(string filename) {
                 ressource->setTaille(taille);
                 ressource->setChemin(chemin);
                 _baseDonnées.push_back(ressource);
-
-                _nRessources++;
 
             }
 
@@ -305,17 +281,15 @@ void Mediatheque::load(string filename) {
                 ressource->setNArticle(nArticle);
                 _baseDonnées.push_back(ressource);
 
-                _nRessources++;
-
             }
 
             else
-                cout << "Problème de lecture de la ressource " << _nRessources << endl << "Vérifiez la ligne " << _nRessources +1 << endl;
+                cout << "Problème de lecture de la ressource " << nRessources << endl << "Vérifiez la ligne " << nRessources +1 << endl;
 
         }
 
         cout << "La médiathèque " << _nomMed << " a bien été chargée." << endl;
-        cout << "Nombre de ressources chargées : " << _nRessources << endl;
+        cout << "Nombre de ressources chargées : " << _baseDonnées.size() << endl;
 
         fichier.close();  // on ferme le fichier`
 
@@ -350,16 +324,6 @@ void Mediatheque::show(string id) {
 
 void Mediatheque::bye() {
 
-    while(!_baseDonnées.empty()) {
-        delete _baseDonnées.back();
-        _baseDonnées.pop_back();
-    }
-
-    while(!_baseRecherche.empty()) {
-        delete _baseRecherche.back();
-        _baseRecherche.pop_back();
-    }
-
     _baseDonnées.clear();
     _baseRecherche.clear();
 
@@ -368,11 +332,6 @@ void Mediatheque::bye() {
 }
 
 void Mediatheque::reset() {
-
-//    while(!_baseDonnées.empty()) {
-//        delete _baseDonnées.back();
-//        _baseDonnées.pop_back();
-//    }
 
     _baseDonnées.clear();
     _baseRecherche.clear();
@@ -389,7 +348,6 @@ void Mediatheque::deleteId(string id) {
 
     if (_baseDonnées[i]->id() == id) {
         _baseDonnées.erase(_baseDonnées.begin()+i);
-        _nRessources--;
 
         while( i < static_cast<unsigned>(_baseRecherche.size()) && _baseRecherche[i]->id() != id) {
             i++;
@@ -399,9 +357,9 @@ void Mediatheque::deleteId(string id) {
             _baseRecherche.erase(_baseRecherche.begin()+i);
         }
 
+        clear();
         cout << "La ressource " << id << " a bien été effacée de la médiathèque" << endl;
     }
-
 
 
     else if (i == static_cast<unsigned>(_baseDonnées.size())) {
@@ -476,7 +434,6 @@ void Mediatheque::save(string filename) {
 
 void Mediatheque::add(string type) {
 
-    _nRessources++;
     string id = to_string((stoi((_baseDonnées.back())->id()))+1);
 
     string ligne;
@@ -649,6 +606,7 @@ void Mediatheque::add(string type) {
         _baseDonnées.push_back(ressource);
     }
 
+    clear();
     cout << "La ressource " << nom << " avec l'id : " << id << " a bien été ajoutée à la médiathèque " << _nomMed << endl;
 
 }

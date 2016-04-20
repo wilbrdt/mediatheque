@@ -14,8 +14,6 @@ Done (18/04):
 
 To do :
 	- Classe revue et article
-	- _nRessources non utile, on peut juste regarder la taille du vector _baseDonnées
-	- vérifier de bien delete les cp et tmp des fonctions
 	
 
 Améliorations possibles :
@@ -23,4 +21,9 @@ Améliorations possibles :
 	- Interface graphique
 	- faire la base de données propre en SQL et plus en C++ dégueulasse
 	- Accent insensitive pour la reconnaissance des commandes (case insensitive done)
+
+
+Problématiques :
+	- je ne suis pas sûr des fonctions qui désallouent les données (bye) et si lorsque je crée des copie de ressources (tmp ou cp) ou du vector _baseRecherche (baseRechercheTmp), sont-elles supprimées à la fin de la fonction ?
+		*** A voir avec Legal
 

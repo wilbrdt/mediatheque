@@ -26,9 +26,6 @@ public:
     string nomMed() const;
     void setNomMed(const string &nomMed);
 
-    int nRessources() const;
-    void setNRessources(int nRessources);
-
     void bye() __attribute__ ((noreturn));
     void help();
     void add(string type);
@@ -46,7 +43,6 @@ public:
 protected :
     string _nomMed;
     vector<Ressources *> _baseDonnées;
-    int _nRessources;
 
     vector <Ressources *> _baseRecherche;
 };
