@@ -18,7 +18,7 @@ void Mediatheque::setNomMed(const string &nomMed)
     _nomMed = nomMed;
 }
 
-void Mediatheque::load(string filename) {
+void Mediatheque::load(string filename) { //Charge la médiathèque correspondante au nom du fichier (filename)
 
     reset();
 
@@ -32,7 +32,7 @@ void Mediatheque::load(string filename) {
 
     if(fichier) {  // si l'ouverture a réussi
 
-        while(getline(fichier, ligne)) {
+        while(getline(fichier, ligne)) { //On récupére chaque ligne
 
             nRessources++;
             string mot;
@@ -41,7 +41,7 @@ void Mediatheque::load(string filename) {
             string nom;
             string auteur;
 
-            for(int i = 0; i < 4; i++) {
+            for(int i = 0; i < 4; i++) { //On extrait les infos de base de la ligne (id, type, nom et auteur)
 
                 mot = découpageMot(ligne);
                 ligne = découpageLigne(ligne);
@@ -65,7 +65,7 @@ void Mediatheque::load(string filename) {
                 }
             }
 
-            if (type == "Livre") {
+            if (type == "Livre") { //En fonction du type, on récupère les autres infos
                 string année;
                 string résumé;
                 string nPage;
@@ -87,7 +87,7 @@ void Mediatheque::load(string filename) {
 
                 nPage = ligne;
 
-                Livre *ressource = new Livre(); // creation d'un livre et incorporation des infos
+                Livre *ressource = new Livre(); // On copie les infos dans le type qui va bien
                 ressource->setId(id);
                 ressource->setNom(nom);
                 ressource->setAuteur(auteur);
@@ -96,7 +96,7 @@ void Mediatheque::load(string filename) {
                 ressource->setAnnée(année);
                 ressource->setRésumé(résumé);
                 ressource->setNPage(nPage);
-                _baseDonnées.push_back(ressource);
+                _baseDonnées.push_back(ressource); //On ajoute la ressource à la base de données
 
             }
 
@@ -309,7 +309,7 @@ void Mediatheque::load(string filename) {
     else  // sinon
       cerr << "Impossible d'ouvrir le fichier !" << endl;
 
-    if(_baseRecherche.empty()) {
+    if(_baseRecherche.empty()) { //On charge aussi toutes les ressources dans la base de données courante
         for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {
 
             _baseRecherche.push_back((_baseDonnées[i]));
@@ -318,13 +318,13 @@ void Mediatheque::load(string filename) {
 
 }
 
-void Mediatheque::show(string id) {
+void Mediatheque::show(string id) { //On montre toutes les infos d'une ressource
     unsigned i = 0;
-    while( i < static_cast<unsigned>(_baseDonnées.size())  && _baseDonnées[i]->id() != id) {
+    while( i < static_cast<unsigned>(_baseDonnées.size())  && _baseDonnées[i]->id() != id) { //On recherche la ressource avec l'id correspondante
         i++;
     }
 
-    if (_baseDonnées[i]->id() == id) {
+    if (_baseDonnées[i]->id() == id) { //Dès qu'on l'a trouvé, on affiche ses infos
         _baseDonnées[i]->show();
     }
 
@@ -333,7 +333,7 @@ void Mediatheque::show(string id) {
     }
 }
 
-void Mediatheque::bye() {
+void Mediatheque::bye() { //On ferme l'appli en nettoyant les vector créés
 
     _baseDonnées.clear();
     _baseRecherche.clear();
@@ -342,7 +342,7 @@ void Mediatheque::bye() {
     exit(1);
 }
 
-void Mediatheque::reset() {
+void Mediatheque::reset() { //On nettoie seulement les vector créés
 
     _baseDonnées.clear();
     _baseRecherche.clear();
@@ -350,14 +350,14 @@ void Mediatheque::reset() {
     cout << "Toutes les ressources ont été supprimées de la médiathèque " << _nomMed << endl;
 }
 
-void Mediatheque::deleteId(string id) {
+void Mediatheque::deleteId(string id) { //On supprime une ressource en fonction de son id
 
     unsigned i = 0;
-    while( i < static_cast<unsigned>(_baseDonnées.size()) && _baseDonnées[i]->id() != id) {
+    while( i < static_cast<unsigned>(_baseDonnées.size()) && _baseDonnées[i]->id() != id) { //Recherche de la ressource
         i++;
     }
 
-    if (_baseDonnées[i]->id() == id) {
+    if (_baseDonnées[i]->id() == id) { //Si on l'a trouve, on l'efface et on fait de même dansla base de recherche
         _baseDonnées.erase(_baseDonnées.begin()+i);
 
         while( i < static_cast<unsigned>(_baseRecherche.size()) && _baseRecherche[i]->id() != id) {
@@ -373,28 +373,28 @@ void Mediatheque::deleteId(string id) {
     }
 
 
-    else if (i == static_cast<unsigned>(_baseDonnées.size())) {
+    else if (i == static_cast<unsigned>(_baseDonnées.size())) { //Sinon, on l'indique à l'utilisateur
         cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
     }
 
 }
 
-void Mediatheque::save(string filename) {
+void Mediatheque::save(string filename) { //Sauvegarde de la base de données dans un fichier texte
 
     string file = filename + ".txt";
     string séparateur = " *=* ";
     string type;
 
-    ofstream fichier(file, ios::out | ios::trunc);  // on ouvre le fichier en lecture
+    ofstream fichier(file, ios::out | ios::trunc);  // on ouvre le fichier en écriture
 
     if(fichier) {  // si l'ouverture a réussi
 
-        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {
+        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {//On parcourt touts les cases de la base de données
 
             type = _baseDonnées[i]->type();
-
+            //On écrit les infos de bases
             fichier << _baseDonnées[i]->id() << séparateur << type << séparateur << _baseDonnées[i]->nom() << séparateur << _baseDonnées[i]->auteur() << séparateur;
-
+            //En fonction du type, on écrit les infos qui manquent
             if (type == "Livre") {
                 Livre *cp = new Livre();
                 cp = dynamic_cast<Livre*>(_baseDonnées[i]) ;
@@ -447,20 +447,20 @@ void Mediatheque::save(string filename) {
         cerr << "Erreur à l'ouverture !" << endl;
 }
 
-void Mediatheque::add(string type) {
+void Mediatheque::add(string type) {//On ajoute une ressource dans la base de données
 
-    string id = to_string((stoi((_baseDonnées.back())->id()))+1);
+    string id = to_string((stoi((_baseDonnées.back())->id()))+1); //On trouve une id non prise en regardant la dernière case
 
     string ligne;
     string nom;
     string auteur;
-
+    //On récupère les infos de base
     cout << "Quel est le nom de la ressource ?" << endl;
     getline(cin,nom);
     cout << "Qui est l'auteur de la ressource ?" << endl;
     getline(cin,auteur);
 
-    if (type == "Livre") {
+    if (type == "Livre") { //On récupère les infos complémentaires en fonction du type
         Livre *ressource = new Livre();
         ressource->setId(id);
         ressource->setType(type);
@@ -628,23 +628,23 @@ void Mediatheque::add(string type) {
         _baseDonnées.push_back(ressource);
     }
 
-    clear();
+    clear(); //On ajoute cette ressource dans la base de recherche en la réinitialisant
     cout << "La ressource " << nom << " avec l'id : " << id << " a bien été ajoutée à la médiathèque " << _nomMed << endl;
 
 }
 
-void Mediatheque::search(string info) {
+void Mediatheque::search(string info) { //On recherche une info dans la base de recherche
 
-    vector <Ressources*> baseRechercheTmp;
+    vector <Ressources*> baseRechercheTmp; //On créé une base de Recherche temporaire où on va mettre les résultats positifs de la recherche
 
-    for (unsigned i =0; i < static_cast<unsigned>(_baseRecherche.size()); i++) {
+    for (unsigned i =0; i < static_cast<unsigned>(_baseRecherche.size()); i++) { //On parcourt toutes les cases de la base de Recherche
 
         string nom = _baseRecherche[i]->nom();
         string auteur = _baseRecherche[i]->auteur();
         string type = _baseRecherche[i]->type();
         string id = _baseRecherche[i]->id();
 
-        if (type == "Livre") {
+        if (type == "Livre") {//On vérifie s'il y a un match avec une des infos, si oui, on ajoute la ressource à la base de recherche temporaire
             Livre *cp = new Livre();
             cp = dynamic_cast<Livre*>(_baseRecherche[i]);
             string année = cp->année();
@@ -733,24 +733,23 @@ void Mediatheque::search(string info) {
 
     cout << "Recherche effectuée" << endl;
 
-    _baseRecherche.clear();
-    cout << baseRechercheTmp.size() << endl;
+    _baseRecherche.clear();  //On efface alors la base de recherche et on recopie la base de recherche temporaire dans la base de recherche
 
     for(unsigned i = 0 ; i < baseRechercheTmp.size(); i++) {
         _baseRecherche.push_back(baseRechercheTmp[i]);
     }
 
-    baseRechercheTmp.clear();
+    baseRechercheTmp.clear(); //On efface la base de recherche temporaire
 
     unsigned nRésultat = static_cast<unsigned>(_baseRecherche.size());
-    if (nRésultat > 0) {
+    if (nRésultat > 0) {//On indique le nombre de résultats à l'utilisateur
         cout << "Résultats trouvés : " << nRésultat << ". Veuillez inscrire la commande LIST pour les afficher" << endl;
     }
     else
         cout << "Pas de résultat" << endl;
 }
 
-void Mediatheque::clear() {
+void Mediatheque::clear() { //On réinitialise la base de recherche avec la base de données
 
     _baseRecherche.clear();
 
@@ -763,7 +762,7 @@ void Mediatheque::clear() {
     cout << "La base de recherche a été réinitialisée" << endl;
 }
 
-void Mediatheque::list() {
+void Mediatheque::list() { //On affiche les infos de base des ressources de la base de recherche
 
     if(_baseDonnées.size() == _baseRecherche.size())
         cout << "La médiathèque contient : " << _baseRecherche.size() << " ressources." << endl;

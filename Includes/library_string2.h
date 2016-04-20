@@ -5,20 +5,20 @@
 
 using namespace std;
 
-string découpageLigne(string ligne) {
+string découpageLigne(string ligne) { //Découpe la ligne en deux morceaux en fonction du premier séparateur  *=*
     unsigned pos = static_cast<unsigned>(ligne.find(" *=* "));
     unsigned tailleLigne = static_cast<unsigned>(ligne.size());
     string newLigne = ligne.substr(pos+5,tailleLigne-(pos+5));
     return newLigne;
 }
 
-string découpageMot(string ligne) {
+string découpageMot(string ligne) { //Découpe le mot d'une ligne avnt le premier séparateur *=*
     unsigned pos = static_cast<unsigned>(ligne.find(" *=* "));
     string mot = ligne.substr(0,pos);
     return mot;
 }
 
-bool rechercheString(string chaine, string compare) {
+bool rechercheString(string chaine, string compare) { //Recherche dans "chaine", le string "compare" sans tenir compte de la casse
 
     unsigned taille = static_cast<unsigned>(chaine.size());
     string newChaine;

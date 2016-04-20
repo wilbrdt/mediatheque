@@ -37,13 +37,11 @@ public:
     void list();
     void show(string id);
     void deleteId(string id);
-    void borrow(string id);
-    void restore(string id);
 
 protected :
     string _nomMed;
-    vector<Ressources *> _baseDonnées;
-    vector <Ressources *> _baseRecherche;
+    vector<Ressources *> _baseDonnées; //Base de données de la médiathèque
+    vector <Ressources *> _baseRecherche; //Base de recherche courante
 };
 
 #endif // MEDIATHEQUE_H

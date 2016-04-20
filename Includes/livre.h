@@ -7,7 +7,6 @@ class Livre : public Ressources{
 
 public :
     Livre();
-    void afficheInfos(); //fonction de test
     ~Livre();
 
     string année() const;

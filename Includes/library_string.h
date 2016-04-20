@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string découpageCommande(string instruction) {
+string découpageCommande(string instruction) { //Découpe la partie commande de la ligne récupérée et met tout en majuscule pour éviter les pb de casse
     int position = instruction.find(" ");
     string commande = instruction.substr(0, position);
 
@@ -20,7 +20,7 @@ string découpageCommande(string instruction) {
     return newCommande;
 }
 
-string découpageComplément (string instruction) {
+string découpageComplément (string instruction) { //Découpe la partie complément (id, filename, etc) de la ligne récupérée
     int taille = instruction.size();
     int position = instruction.find(" ");
     string complément = instruction.substr(position+1, taille-(position+1));

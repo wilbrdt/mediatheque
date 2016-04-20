@@ -13,7 +13,7 @@ Utilisateur::~Utilisateur() {
 
 }
 
-void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentMed) {
+void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentMed) { //Reconnait l'action tapée par l'utilisateur et execute la fonction correspondante
 
     string commande = découpageCommande(instruction);
     string complément = découpageComplément(instruction);

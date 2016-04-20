@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Ressources{
+class Ressources{ //Classe de base de toutes les ressources
 
 public :
     Ressources();

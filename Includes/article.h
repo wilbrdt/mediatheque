@@ -5,17 +5,14 @@
 
 using namespace std;
 
-class Article {
+class Article { //Classe Article qui sont contenus dans une revue
 
 public:
     Article();
-    ~Article();
+    virtual ~Article();
 
     string nomArticle() const;
     void setNomArticle(const string &nomArticle);
-
-//    string auteurArticle() const;
-//    void setAuteurArticle(const string &auteurArticle);
 
     virtual void show();
 
