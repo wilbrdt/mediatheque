@@ -10,10 +10,9 @@ Done (18/04):
 	- Interface utilisateur en version console
 	- Implémentation de commandes : load, bye, reset, show, delete, save, add, search, clear, list
 
-	***Application fonctionnelle avec les points cités précédemment***
+	***V1 fonctionnelle***
 
 To do :
-	- Classe revue et article
 	
 
 Améliorations possibles :

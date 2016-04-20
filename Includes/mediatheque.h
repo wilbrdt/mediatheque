@@ -43,7 +43,6 @@ public:
 protected :
     string _nomMed;
     vector<Ressources *> _baseDonnées;
-
     vector <Ressources *> _baseRecherche;
 };
 

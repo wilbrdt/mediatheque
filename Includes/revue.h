@@ -1,5 +1,6 @@
 #include "livre.h"
 #include "article.h"
+#include <vector>
 
 #ifndef REVUE_H
 #define REVUE_H
@@ -14,15 +15,17 @@ public:
     virtual string éditeur() const;
     void setÉditeur(const string &éditeur);
 
-    string nArticle() const;
-    void setNArticle(const string &nArticle);
-
     virtual void show();
+
+    void addArticle(Article* article);
+    int getNArticle();
+    string getNomArticleI(int i);
 
 protected :
     string _éditeur;
+    vector <Article *> _tableauArticle;
     string _nArticle;
-    //Article* _articles[100];
+
 };
 
 #endif // REVUE_H

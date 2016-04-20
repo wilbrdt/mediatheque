@@ -14,14 +14,14 @@ public:
     string nomArticle() const;
     void setNomArticle(const string &nomArticle);
 
-    string auteurArticle() const;
-    void setAuteurArticle(const string &auteurArticle);
+//    string auteurArticle() const;
+//    void setAuteurArticle(const string &auteurArticle);
 
     virtual void show();
 
 protected :
     string _nomArticle;
-    string _auteurArticle;
+    //string _auteurArticle;
 
 };
 

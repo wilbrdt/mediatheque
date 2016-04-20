@@ -2,13 +2,9 @@
 
 using namespace std;
 
-
-// test
-
 Article::Article(){
 
 }
-
 
 Article::~Article(){
 
@@ -24,20 +20,19 @@ void Article::setNomArticle(const string &nomArticle)
     _nomArticle = nomArticle;
 }
 
-string Article::auteurArticle() const
-{
-    return _auteurArticle;
-}
+//string Article::auteurArticle() const
+//{
+//    return _auteurArticle;
+//}
 
-void Article::setAuteurArticle(const string &auteurArticle)
-{
-    _auteurArticle = auteurArticle;
-}
+//void Article::setAuteurArticle(const string &auteurArticle)
+//{
+//    _auteurArticle = auteurArticle;
+//}
 
 void Article::show() {
 
-    //Ressources::show();
     cout << "Titre de l'article : " << _nomArticle << endl;
-    cout << "Auteur de l'article : " << _auteurArticle << endl;
+     //cout << "Auteur de l'article : " << _auteurArticle << endl;
 
 }

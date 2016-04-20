@@ -241,9 +241,9 @@ void Mediatheque::load(string filename) {
                 string résumé;
                 string nPage;
                 string éditeur;
-                string nArticle;
+                unsigned nArticle;
 
-                for(int i = 0; i < 4; i++) {
+                for(int i = 0; i < 5; i++) {
                     mot = découpageMot(ligne);
                     ligne = découpageLigne(ligne);
 
@@ -263,12 +263,14 @@ void Mediatheque::load(string filename) {
                         case 3 :
                             éditeur = mot;
                         break;
+
+                        case 4 :
+                            nArticle = static_cast<unsigned>(stoi(mot));
+                        break;
                     }
                 }
 
-                nArticle = ligne;
-
-                Revue *ressource = new Revue(); // creation d'un livre et incorporation des infos
+                Revue *ressource = new Revue();
                 ressource->setId(id);
                 ressource->setNom(nom);
                 ressource->setAuteur(auteur);
@@ -278,7 +280,16 @@ void Mediatheque::load(string filename) {
                 ressource->setRésumé(résumé);
                 ressource->setNPage(nPage);
                 ressource->setÉditeur(éditeur);
-                ressource->setNArticle(nArticle);
+
+                for(unsigned i = 0; i< nArticle; i++) {
+                    mot = découpageMot(ligne);
+                    ligne = découpageLigne(ligne);
+
+                    Article *article = new Article();
+                    article->setNomArticle(mot);
+                    ressource->addArticle(article);
+                }
+
                 _baseDonnées.push_back(ressource);
 
             }
@@ -417,7 +428,11 @@ void Mediatheque::save(string filename) {
             else if (type == "Revue") {
                 Revue *cp = new Revue();
                 cp = dynamic_cast<Revue*>(_baseDonnées[i]) ;
-                fichier << cp->éditeur() << séparateur << cp->nArticle();
+                fichier << cp->année() << séparateur << cp->résumé() << séparateur << cp->nPage() << séparateur <<cp->éditeur() << séparateur << cp->getNArticle();
+                for (int i = 0; i< cp->getNArticle() ; i++) {
+                    fichier << séparateur << cp->getNomArticleI(i);
+                }
+
             }
 
             fichier << endl;
@@ -601,7 +616,14 @@ void Mediatheque::add(string type) {
         getline(cin,nArticle);
 
         ressource->setÉditeur(éditeur);
-        ressource->setNArticle(nArticle);
+        string nomArticle;
+        for(int i = 0; i < stoi(nArticle); i++) {
+            cout << "Quel est le nom de de l'article " << i+1 << " ? (si vous ne savez pas, veuillez inscrire : N/A)" <<endl;
+            getline(cin, nomArticle);
+            Article* article = new Article();
+            article->setNomArticle((nomArticle));
+            ressource->addArticle(article);
+        }
 
         _baseDonnées.push_back(ressource);
     }
@@ -691,10 +713,18 @@ void Mediatheque::search(string info) {
             string résumé = cp->résumé();
             string nPage = cp->nPage();
             string éditeur = cp->éditeur();
-            string nArticle = cp->nArticle();
 
-            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)|| rechercheString(nArticle, info)) {
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)) {
                baseRechercheTmp.push_back(_baseRecherche[i]);
+            }
+
+            else {
+                for(int j = 0; j < cp->getNArticle(); j++) {
+                    if(rechercheString(cp->getNomArticleI(j),info)) {
+                        baseRechercheTmp.push_back(_baseRecherche[i]);
+                        break;
+                    }
+                }
             }
         }
 
