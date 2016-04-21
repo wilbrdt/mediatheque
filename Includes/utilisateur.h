@@ -20,8 +20,16 @@ public:
     string nomUtilisateur() const;
     void setNomUtilisateur(const string &nomUtilisateur);
 
+    string motPasseAdmin() const;
+    void setMotPasseAdmin(const string &motPasseAdmin);
+
+    bool estAdmin() const;
+    void setEstAdmin(bool estAdmin);
+
 protected :
     string _nomUtilisateur;
+    string _motPasseAdmin;
+    bool _estAdmin;
 
 };
 

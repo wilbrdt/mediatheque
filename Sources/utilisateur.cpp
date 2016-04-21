@@ -6,7 +6,8 @@
 
 Utilisateur::Utilisateur()
 {
-    
+    _motPasseAdmin = "ADMIN";
+    _estAdmin = false;
 }
 
 Utilisateur::~Utilisateur() {
@@ -22,20 +23,12 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
         currentMed->bye();
     }
 
-    else if (commande == "ADD") {
-        currentMed->add(complément);
+    else if (commande == "SEARCH") {
+        currentMed->search(complément);
     }
 
     else if (commande == "LOAD") {
         currentMed->load(complément);
-    }
-
-    else if (commande == "SAVE") {
-        currentMed->save(complément);
-    }
-
-    else if (commande == "SEARCH") {
-        currentMed->search(complément);
     }
 
     else if (commande == "CLEAR") {
@@ -50,12 +43,23 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
         currentMed->show(complément);
     }
 
-    else if (commande == "DELETE") {
-        currentMed->deleteId(complément);
-    }
-
     else if (commande == "RESET") {
         currentMed->reset();
+    }
+
+    else if(_estAdmin) {
+
+        if (commande == "ADD") {
+            currentMed->add(complément);
+        }
+
+        else if (commande == "SAVE") {
+            currentMed->save(complément);
+        }
+
+        else if (commande == "DELETE") {
+            currentMed->deleteId(complément);
+        }
     }
 
     else {
@@ -71,6 +75,26 @@ string Utilisateur::nomUtilisateur() const
 void Utilisateur::setNomUtilisateur(const string &nomUtilisateur)
 {
     _nomUtilisateur = nomUtilisateur;
+}
+
+string Utilisateur::motPasseAdmin() const
+{
+    return _motPasseAdmin;
+}
+
+void Utilisateur::setMotPasseAdmin(const string &motPasseAdmin)
+{
+    _motPasseAdmin = motPasseAdmin;
+}
+
+bool Utilisateur::estAdmin() const
+{
+    return _estAdmin;
+}
+
+void Utilisateur::setEstAdmin(bool estAdmin)
+{
+    _estAdmin = estAdmin;
 }
 
 

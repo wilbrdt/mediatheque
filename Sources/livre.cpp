@@ -6,10 +6,6 @@ Livre::Livre() : Ressources() {
 
 }
 
-void Livre::afficheInfos() {
-    cout << _nom << endl << _auteur << endl;
-}
-
 Livre::~Livre(){
 
 }
