@@ -14,8 +14,8 @@ public:
     string prod() const;
     void setProd(const string &prod);
 
-    string durée() const;
-    void setDurée(const string &durée);
+    string duree() const;
+    void setDuree(const string &duree);
 
     string nPiste() const;
     void setNPiste(const string &nPiste);
@@ -23,7 +23,7 @@ public:
     virtual void show();
 
 protected :
-    string _durée;
+    string _duree;
     string _nPiste;
     string _prod;
 };

@@ -13,13 +13,13 @@ public:
     virtual string prod() const;
     void setProd(const string &prod);
 
-    string durée() const;
-    void setDurée(const string &durée);
+    string duree() const;
+    void setDuree(const string &duree);
 
     virtual void show();
 
 protected :
-    string _durée;
+    string _duree;
     string _prod;
 
 };

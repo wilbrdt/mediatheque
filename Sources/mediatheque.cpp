@@ -18,7 +18,7 @@ void Mediatheque::setNomMed(const string &nomMed)
     _nomMed = nomMed;
 }
 
-void Mediatheque::load(string filename) { //Charge la médiathèque correspondante au nom du fichier (filename)
+void Mediatheque::load(string filename) { //Charge la mediathèque correspondante au nom du fichier (filename)
 
     reset();
 
@@ -30,9 +30,9 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
 
     ifstream fichier(file, ios::in);  // on ouvre le fichier en lecture
 
-    if(fichier) {  // si l'ouverture a réussi
+    if(fichier) {  // si l'ouverture a reussi
 
-        while(getline(fichier, ligne)) { //On récupére chaque ligne
+        while(getline(fichier, ligne)) { //On recupere chaque ligne
 
             nRessources++;
             string mot;
@@ -43,8 +43,8 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
 
             for(int i = 0; i < 4; i++) { //On extrait les infos de base de la ligne (id, type, nom et auteur)
 
-                mot = découpageMot(ligne);
-                ligne = découpageLigne(ligne);
+                mot = decoupageMot(ligne);
+                ligne = decoupageLigne(ligne);
 
                 switch(i) {
                     case 0 :
@@ -65,22 +65,22 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 }
             }
 
-            if (type == "Livre") { //En fonction du type, on récupère les autres infos
-                string année;
-                string résumé;
+            if (type == "Livre") { //En fonction du type, on recupère les autres infos
+                string annee;
+                string resume;
                 string nPage;
 
                 for(int i = 0; i < 2; i++) {
-                    mot = découpageMot(ligne);
-                    ligne = découpageLigne(ligne);
+                    mot = decoupageMot(ligne);
+                    ligne = decoupageLigne(ligne);
 
                     switch(i) {
                         case 0 :
-                            année = mot;
+                            annee = mot;
                         break;
 
                         case 1 :
-                            résumé = mot;
+                            resume = mot;
                         break;          
                     }
                 }
@@ -93,25 +93,25 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 ressource->setAuteur(auteur);
                 ressource->setType(type);
 
-                ressource->setAnnée(année);
-                ressource->setRésumé(résumé);
+                ressource->setAnnee(annee);
+                ressource->setResume(resume);
                 ressource->setNPage(nPage);
-                _baseDonnées.push_back(ressource); //On ajoute la ressource à la base de données
+                _baseDonnees.push_back(ressource); //On ajoute la ressource à la base de donnees
 
             }
 
             else if (type == "CD") {
-                string durée;
+                string duree;
                 string nPiste;
                 string prod;
 
                 for(int i = 0; i < 2; i++) {
-                    mot = découpageMot(ligne);
-                    ligne = découpageLigne(ligne);
+                    mot = decoupageMot(ligne);
+                    ligne = decoupageLigne(ligne);
 
                     switch(i) {
                         case 0 :
-                            durée = mot;
+                            duree = mot;
                         break;
 
                         case 1 :
@@ -128,25 +128,25 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 ressource->setAuteur(auteur);
                 ressource->setType(type);
 
-                ressource->setDurée(durée);
+                ressource->setDuree(duree);
                 ressource->setNPiste(nPiste);
                 ressource->setProd(prod);
-                _baseDonnées.push_back(ressource);
+                _baseDonnees.push_back(ressource);
 
             }
 
             else if (type == "VHS") {
 
-                string durée;
+                string duree;
                 string prod;
 
                 for(int i = 0; i < 1; i++) {
-                    mot = découpageMot(ligne);
-                    ligne = découpageLigne(ligne);
+                    mot = decoupageMot(ligne);
+                    ligne = decoupageLigne(ligne);
 
                     switch(i) {
                         case 0 :
-                            durée = mot;
+                            duree = mot;
                         break;
                     }
                 }
@@ -159,25 +159,25 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 ressource->setAuteur(auteur);
                 ressource->setType(type);
 
-                ressource->setDurée(durée);
+                ressource->setDuree(duree);
                 ressource->setProd(prod);
-                _baseDonnées.push_back(ressource);
+                _baseDonnees.push_back(ressource);
 
             }
 
             else if (type == "DVD") {
 
-                string durée;
+                string duree;
                 string prod;
                 string nPiste;
 
                 for(int i = 0; i < 2; i++) {
-                    mot = découpageMot(ligne);
-                    ligne = découpageLigne(ligne);
+                    mot = decoupageMot(ligne);
+                    ligne = decoupageLigne(ligne);
 
                     switch(i) {
                         case 0 :
-                            durée = mot;
+                            duree = mot;
                         break;
 
                         case 1 :
@@ -194,10 +194,10 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 ressource->setAuteur(auteur);
                 ressource->setType(type);
 
-                ressource->setDurée(durée);
+                ressource->setDuree(duree);
                 ressource->setProd(prod);
                 ressource->setNPiste(nPiste);
-                _baseDonnées.push_back(ressource);
+                _baseDonnees.push_back(ressource);
 
             }
 
@@ -207,8 +207,8 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 string chemin;
 
                 for(int i = 0; i < 2; i++) {
-                    mot = découpageMot(ligne);
-                    ligne = découpageLigne(ligne);
+                    mot = decoupageMot(ligne);
+                    ligne = decoupageLigne(ligne);
 
                     switch(i) {
                         case 0 :
@@ -232,28 +232,28 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 ressource->setExtension(extension);
                 ressource->setTaille(taille);
                 ressource->setChemin(chemin);
-                _baseDonnées.push_back(ressource);
+                _baseDonnees.push_back(ressource);
 
             }
 
             else if (type == "Revue") {
-                string année;
-                string résumé;
+                string annee;
+                string resume;
                 string nPage;
-                string éditeur;
+                string editeur;
                 unsigned nArticle;
 
                 for(int i = 0; i < 5; i++) {
-                    mot = découpageMot(ligne);
-                    ligne = découpageLigne(ligne);
+                    mot = decoupageMot(ligne);
+                    ligne = decoupageLigne(ligne);
 
                     switch(i) {
                         case 0 :
-                            année = mot;
+                            annee = mot;
                         break;
 
                         case 1 :
-                            résumé = mot;
+                            resume = mot;
                         break;
 
                         case 2 :
@@ -261,7 +261,7 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                         break;
 
                         case 3 :
-                            éditeur = mot;
+                            editeur = mot;
                         break;
 
                         case 4 :
@@ -276,31 +276,31 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
                 ressource->setAuteur(auteur);
                 ressource->setType(type);
 
-                ressource->setAnnée(année);
-                ressource->setRésumé(résumé);
+                ressource->setAnnee(annee);
+                ressource->setResume(resume);
                 ressource->setNPage(nPage);
-                ressource->setÉditeur(éditeur);
+                ressource->setEditeur(editeur);
 
                 for(unsigned i = 0; i< nArticle; i++) {
-                    mot = découpageMot(ligne);
-                    ligne = découpageLigne(ligne);
+                    mot = decoupageMot(ligne);
+                    ligne = decoupageLigne(ligne);
 
                     Article *article = new Article();
                     article->setNomArticle(mot);
                     ressource->addArticle(article);
                 }
 
-                _baseDonnées.push_back(ressource);
+                _baseDonnees.push_back(ressource);
 
             }
 
             else
-                cout << "Problème de lecture de la ressource " << nRessources << endl << "Vérifiez la ligne " << nRessources +1 << endl;
+                cout << "Problème de lecture de la ressource " << nRessources << endl << "Verifiez la ligne " << nRessources +1 << endl;
 
         }
 
-        cout << "La médiathèque " << _nomMed << " a bien été chargée." << endl;
-        cout << "Nombre de ressources chargées : " << _baseDonnées.size() << endl;
+        cout << "La mediathèque " << _nomMed << " a bien ete chargee." << endl;
+        cout << "Nombre de ressources chargees : " << _baseDonnees.size() << endl;
 
         fichier.close();  // on ferme le fichier`
 
@@ -309,10 +309,10 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
     else  // sinon
       cerr << "Impossible d'ouvrir le fichier !" << endl;
 
-    if(_baseRecherche.empty()) { //On charge aussi toutes les ressources dans la base de données courante
-        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {
+    if(_baseRecherche.empty()) { //On charge aussi toutes les ressources dans la base de donnees courante
+        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnees.size()); i++) {
 
-            _baseRecherche.push_back((_baseDonnées[i]));
+            _baseRecherche.push_back((_baseDonnees[i]));
         }
     }
 
@@ -320,45 +320,45 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
 
 void Mediatheque::show(string id) { //On montre toutes les infos d'une ressource
     unsigned i = 0;
-    while( i < static_cast<unsigned>(_baseDonnées.size())  && _baseDonnées[i]->id() != id) { //On recherche la ressource avec l'id correspondante
+    while( i < static_cast<unsigned>(_baseDonnees.size())  && _baseDonnees[i]->id() != id) { //On recherche la ressource avec l'id correspondante
         i++;
     }
 
-    if (_baseDonnées[i]->id() == id) { //Dès qu'on l'a trouvé, on affiche ses infos
-        _baseDonnées[i]->show();
+    if (_baseDonnees[i]->id() == id) { //Dès qu'on l'a trouve, on affiche ses infos
+        _baseDonnees[i]->show();
     }
 
-    else if (i == (static_cast<unsigned>(_baseDonnées.size()))) {
-        cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
+    else if (i == (static_cast<unsigned>(_baseDonnees.size()))) {
+        cout << "La ressource " << id << " n'est pas dans la mediathèque." << endl;
     }
 }
 
-void Mediatheque::bye() { //On ferme l'appli en nettoyant les vector créés
+void Mediatheque::bye() { //On ferme l'appli en nettoyant les vector crees
 
-    _baseDonnées.clear();
+    _baseDonnees.clear();
     _baseRecherche.clear();
 
     cout << "Au revoir" << endl;
     exit(1);
 }
 
-void Mediatheque::reset() { //On nettoie seulement les vector créés
+void Mediatheque::reset() { //On nettoie seulement les vector crees
 
-    _baseDonnées.clear();
+    _baseDonnees.clear();
     _baseRecherche.clear();
 
-    cout << "Toutes les ressources ont été supprimées de la médiathèque " << _nomMed << endl;
+    cout << "Toutes les ressources ont ete supprimees de la mediathèque " << _nomMed << endl;
 }
 
 void Mediatheque::deleteId(string id) { //On supprime une ressource en fonction de son id
 
     unsigned i = 0;
-    while( i < static_cast<unsigned>(_baseDonnées.size()) && _baseDonnées[i]->id() != id) { //Recherche de la ressource
+    while( i < static_cast<unsigned>(_baseDonnees.size()) && _baseDonnees[i]->id() != id) { //Recherche de la ressource
         i++;
     }
 
-    if (_baseDonnées[i]->id() == id) { //Si on l'a trouve, on l'efface et on fait de même dansla base de recherche
-        _baseDonnées.erase(_baseDonnées.begin()+i);
+    if (_baseDonnees[i]->id() == id) { //Si on l'a trouve, on l'efface et on fait de même dansla base de recherche
+        _baseDonnees.erase(_baseDonnees.begin()+i);
 
         while( i < static_cast<unsigned>(_baseRecherche.size()) && _baseRecherche[i]->id() != id) {
             i++;
@@ -369,68 +369,68 @@ void Mediatheque::deleteId(string id) { //On supprime une ressource en fonction 
         }
 
         clear();
-        cout << "La ressource " << id << " a bien été effacée de la médiathèque" << endl;
+        cout << "La ressource " << id << " a bien ete effacee de la mediathèque" << endl;
     }
 
 
-    else if (i == static_cast<unsigned>(_baseDonnées.size())) { //Sinon, on l'indique à l'utilisateur
-        cout << "La ressource " << id << " n'est pas dans la médiathèque." << endl;
+    else if (i == static_cast<unsigned>(_baseDonnees.size())) { //Sinon, on l'indique à l'utilisateur
+        cout << "La ressource " << id << " n'est pas dans la mediathèque." << endl;
     }
 
 }
 
-void Mediatheque::save(string filename) { //Sauvegarde de la base de données dans un fichier texte
+void Mediatheque::save(string filename) { //Sauvegarde de la base de donnees dans un fichier texte
 
     string file = filename + ".txt";
-    string séparateur = " *=* ";
+    string separateur = " *=* ";
     string type;
 
-    ofstream fichier(file, ios::out | ios::trunc);  // on ouvre le fichier en écriture
+    ofstream fichier(file, ios::out | ios::trunc);  // on ouvre le fichier en ecriture
 
-    if(fichier) {  // si l'ouverture a réussi
+    if(fichier) {  // si l'ouverture a reussi
 
-        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {//On parcourt touts les cases de la base de données
+        for (unsigned i =0; i < static_cast<unsigned>(_baseDonnees.size()); i++) {//On parcourt touts les cases de la base de donnees
 
-            type = _baseDonnées[i]->type();
-            //On écrit les infos de bases
-            fichier << _baseDonnées[i]->id() << séparateur << type << séparateur << _baseDonnées[i]->nom() << séparateur << _baseDonnées[i]->auteur() << séparateur;
-            //En fonction du type, on écrit les infos qui manquent
+            type = _baseDonnees[i]->type();
+            //On ecrit les infos de bases
+            fichier << _baseDonnees[i]->id() << separateur << type << separateur << _baseDonnees[i]->nom() << separateur << _baseDonnees[i]->auteur() << separateur;
+            //En fonction du type, on ecrit les infos qui manquent
             if (type == "Livre") {
                 Livre *cp = new Livre();
-                cp = dynamic_cast<Livre*>(_baseDonnées[i]) ;
-                fichier << cp->année() << séparateur << cp->résumé() << séparateur << cp->nPage();
+                cp = dynamic_cast<Livre*>(_baseDonnees[i]) ;
+                fichier << cp->annee() << separateur << cp->resume() << separateur << cp->nPage();
             }
 
             else if (type == "CD") {
                 CD *cp = new CD();
-                cp = dynamic_cast<CD*>(_baseDonnées[i]) ;
-                fichier << cp->durée() << séparateur << cp->nPiste() << séparateur << cp->prod();
+                cp = dynamic_cast<CD*>(_baseDonnees[i]) ;
+                fichier << cp->duree() << separateur << cp->nPiste() << separateur << cp->prod();
             }
 
             else if (type == "VHS") {
                 VHS *cp = new VHS();
-                cp = dynamic_cast<VHS*>(_baseDonnées[i]) ;
-                fichier << cp->durée() << séparateur << cp->prod();
+                cp = dynamic_cast<VHS*>(_baseDonnees[i]) ;
+                fichier << cp->duree() << separateur << cp->prod();
             }
 
             else if (type == "DVD") {
                 DVD *cp = new DVD();
-                cp = dynamic_cast<DVD*>(_baseDonnées[i]) ;
-                fichier << cp->durée() << séparateur << cp->prod() << séparateur << cp->nPiste();
+                cp = dynamic_cast<DVD*>(_baseDonnees[i]) ;
+                fichier << cp->duree() << separateur << cp->prod() << separateur << cp->nPiste();
             }
 
             else if (type == "Num") {
                 Num *cp = new Num();
-                cp = dynamic_cast<Num*>(_baseDonnées[i]) ;
-                fichier << cp->type() << séparateur << cp->taille() << séparateur << cp->chemin();
+                cp = dynamic_cast<Num*>(_baseDonnees[i]) ;
+                fichier << cp->type() << separateur << cp->taille() << separateur << cp->chemin();
             }
 
             else if (type == "Revue") {
                 Revue *cp = new Revue();
-                cp = dynamic_cast<Revue*>(_baseDonnées[i]) ;
-                fichier << cp->année() << séparateur << cp->résumé() << séparateur << cp->nPage() << séparateur <<cp->éditeur() << séparateur << cp->getNArticle();
+                cp = dynamic_cast<Revue*>(_baseDonnees[i]) ;
+                fichier << cp->annee() << separateur << cp->resume() << separateur << cp->nPage() << separateur <<cp->editeur() << separateur << cp->getNArticle();
                 for (int i = 0; i< cp->getNArticle() ; i++) {
-                    fichier << séparateur << cp->getNomArticleI(i);
+                    fichier << separateur << cp->getNomArticleI(i);
                 }
 
             }
@@ -440,49 +440,49 @@ void Mediatheque::save(string filename) { //Sauvegarde de la base de données da
 
         fichier.close();
 
-        cout << "La médiathèque " << _nomMed << " actuellement chargée, a bien été sauvegardée dans le fichier " << file << endl;
+        cout << "La mediathèque " << _nomMed << " actuellement chargee, a bien ete sauvegardee dans le fichier " << file << endl;
     }
 
     else  // sinon
         cerr << "Erreur à l'ouverture !" << endl;
 }
 
-void Mediatheque::add(string type) {//On ajoute une ressource dans la base de données
+void Mediatheque::add(string type) {//On ajoute une ressource dans la base de donnees
 
-    string id = to_string((stoi((_baseDonnées.back())->id()))+1); //On trouve une id non prise en regardant la dernière case
+    string id = to_string((stoi((_baseDonnees.back())->id()))+1); //On trouve une id non prise en regardant la dernière case
 
     string ligne;
     string nom;
     string auteur;
-    //On récupère les infos de base
+    //On recupère les infos de base
     cout << "Quel est le nom de la ressource ?" << endl;
     getline(cin,nom);
     cout << "Qui est l'auteur de la ressource ?" << endl;
     getline(cin,auteur);
 
-    if (type == "Livre") { //On récupère les infos complémentaires en fonction du type
+    if (type == "Livre") { //On recupère les infos complementaires en fonction du type
         Livre *ressource = new Livre();
         ressource->setId(id);
         ressource->setType(type);
         ressource->setNom(nom);
         ressource->setAuteur(auteur);
 
-        string année;
-        string résumé;
+        string annee;
+        string resume;
         string nPage;
 
-        cout << "Quelle est l'année de parution du livre ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,année);
-        cout << "Veuillez donner un résumé du livre (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,résumé);
+        cout << "Quelle est l'annee de parution du livre ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,annee);
+        cout << "Veuillez donner un resume du livre (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,resume);
         cout << "Quel est le nombre de page du livre ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,nPage);
 
-        ressource->setAnnée(année);
-        ressource->setRésumé(résumé);
+        ressource->setAnnee(annee);
+        ressource->setResume(resume);
         ressource->setNPage(nPage);
 
-        _baseDonnées.push_back(ressource);
+        _baseDonnees.push_back(ressource);
     }
 
     else if (type == "CD") {
@@ -492,22 +492,22 @@ void Mediatheque::add(string type) {//On ajoute une ressource dans la base de do
         ressource->setNom(nom);
         ressource->setAuteur(auteur);
 
-        string durée;
+        string duree;
         string nPiste;
         string prod;
 
-        cout << "Quelle est la durée du CD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,durée);
+        cout << "Quelle est la duree du CD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,duree);
         cout << "Combien de piste il y a t-il sur le CD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,nPiste);
         cout << "Quelle est le nom de la maison de production du CD? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,prod);
 
-        ressource->setDurée(durée);
+        ressource->setDuree(duree);
         ressource->setNPiste(nPiste);
         ressource->setProd(prod);
 
-        _baseDonnées.push_back(ressource);
+        _baseDonnees.push_back(ressource);
     }
 
     else if (type == "VHS") {
@@ -517,18 +517,18 @@ void Mediatheque::add(string type) {//On ajoute une ressource dans la base de do
         ressource->setNom(nom);
         ressource->setAuteur(auteur);
 
-        string durée;
+        string duree;
         string prod;
 
-        cout << "Quelle est la durée de la VHS ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,durée);
+        cout << "Quelle est la duree de la VHS ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,duree);
         cout << "Quelle est le nom de la maison de production de la VHS? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,prod);
 
-        ressource->setDurée(durée);
+        ressource->setDuree(duree);
         ressource->setProd(prod);
 
-        _baseDonnées.push_back(ressource);
+        _baseDonnees.push_back(ressource);
     }
 
     else if (type == "DVD") {
@@ -539,22 +539,22 @@ void Mediatheque::add(string type) {//On ajoute une ressource dans la base de do
         ressource->setNom(nom);
         ressource->setAuteur(auteur);
 
-        string durée;
+        string duree;
         string prod;
         string nPiste;
 
-        cout << "Quelle est la durée du DVD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,durée);
+        cout << "Quelle est la duree du DVD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,duree);
         cout << "Quelle est le nom de la maison de production du DVD? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,prod);
         cout << "Combien de piste il y a t-il sur le DVD ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,nPiste);
 
-        ressource->setDurée(durée);
+        ressource->setDuree(duree);
         ressource->setProd(prod);
         ressource->setNPiste(nPiste);
 
-        _baseDonnées.push_back(ressource);
+        _baseDonnees.push_back(ressource);
     }
 
     else if (type == "Num") {
@@ -569,18 +569,18 @@ void Mediatheque::add(string type) {//On ajoute une ressource dans la base de do
         string taille;
         string chemin;
 
-        cout << "Quel est le type de la ressource numérique ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        cout << "Quel est le type de la ressource numerique ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,extension);
-        cout << "Quelle est la taille de la ressource numérique (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        cout << "Quelle est la taille de la ressource numerique (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,taille);
-        cout << "Quel est le chemin de la ressource numérique ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        cout << "Quel est le chemin de la ressource numerique ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,chemin);
 
         ressource->setExtension(extension);
         ressource->setTaille(taille);
         ressource->setChemin(chemin);
 
-        _baseDonnées.push_back(ressource);
+        _baseDonnees.push_back(ressource);
     }
 
     else if (type == "Revue") {
@@ -592,30 +592,30 @@ void Mediatheque::add(string type) {//On ajoute une ressource dans la base de do
         ressource->setNom(nom);
         ressource->setAuteur(auteur);
 
-        string année;
-        string résumé;
+        string annee;
+        string resume;
         string nPage;
 
-        cout << "Quelle est l'année de parution de la revue ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,année);
-        cout << "Veuillez donner un résumé de la revue (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,résumé);
+        cout << "Quelle est l'annee de parution de la revue ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,annee);
+        cout << "Veuillez donner un resume de la revue (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,resume);
         cout << "Quel est le nombre de page de la revue ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,nPage);
 
-        ressource->setAnnée(année);
-        ressource->setRésumé(résumé);
+        ressource->setAnnee(annee);
+        ressource->setResume(resume);
         ressource->setNPage(nPage);
 
-        string éditeur;
+        string editeur;
         string nArticle;
 
-        cout << "Quel est le nom de l'éditeur de la revue (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
-        getline(cin,éditeur);
+        cout << "Quel est le nom de l'editeur de la revue (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
+        getline(cin,editeur);
         cout << "Quel est le nombre d' article de la revue ? (si vous ne savez pas, veuillez inscrire : N/A)" << endl;
         getline(cin,nArticle);
 
-        ressource->setÉditeur(éditeur);
+        ressource->setEditeur(editeur);
         string nomArticle;
         for(int i = 0; i < stoi(nArticle); i++) {
             cout << "Quel est le nom de de l'article " << i+1 << " ? (si vous ne savez pas, veuillez inscrire : N/A)" <<endl;
@@ -625,17 +625,17 @@ void Mediatheque::add(string type) {//On ajoute une ressource dans la base de do
             ressource->addArticle(article);
         }
 
-        _baseDonnées.push_back(ressource);
+        _baseDonnees.push_back(ressource);
     }
 
-    clear(); //On ajoute cette ressource dans la base de recherche en la réinitialisant
-    cout << "La ressource " << nom << " avec l'id : " << id << " a bien été ajoutée à la médiathèque " << _nomMed << endl;
+    clear(); //On ajoute cette ressource dans la base de recherche en la reinitialisant
+    cout << "La ressource " << nom << " avec l'id : " << id << " a bien ete ajoutee à la mediathèque " << _nomMed << endl;
 
 }
 
 void Mediatheque::search(string info) { //On recherche une info dans la base de recherche
 
-    vector <Ressources*> baseRechercheTmp; //On créé une base de Recherche temporaire où on va mettre les résultats positifs de la recherche
+    vector <Ressources*> baseRechercheTmp; //On cree une base de Recherche temporaire où on va mettre les resultats positifs de la recherche
 
     for (unsigned i =0; i < static_cast<unsigned>(_baseRecherche.size()); i++) { //On parcourt toutes les cases de la base de Recherche
 
@@ -644,14 +644,14 @@ void Mediatheque::search(string info) { //On recherche une info dans la base de 
         string type = _baseRecherche[i]->type();
         string id = _baseRecherche[i]->id();
 
-        if (type == "Livre") {//On vérifie s'il y a un match avec une des infos, si oui, on ajoute la ressource à la base de recherche temporaire
+        if (type == "Livre") {//On verifie s'il y a un match avec une des infos, si oui, on ajoute la ressource à la base de recherche temporaire
             Livre *cp = new Livre();
             cp = dynamic_cast<Livre*>(_baseRecherche[i]);
-            string année = cp->année();
-            string résumé = cp->résumé();
+            string annee = cp->annee();
+            string resume = cp->resume();
             string nPage = cp->nPage();
 
-            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info)) {
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(annee,info) || rechercheString(resume, info) || rechercheString(nPage, info)) {
                 baseRechercheTmp.push_back(_baseRecherche[i]);
             }
         }
@@ -659,12 +659,12 @@ void Mediatheque::search(string info) { //On recherche une info dans la base de 
         else if (type == "CD") {
             CD *cp = new CD();
             cp = dynamic_cast<CD*>(_baseRecherche[i]);
-            string durée = cp->durée();
+            string duree = cp->duree();
 
             string nPiste = cp->nPiste();
             string prod = cp->prod();
 
-            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(duree,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
                 baseRechercheTmp.push_back(_baseRecherche[i]);
             }
         }
@@ -673,10 +673,10 @@ void Mediatheque::search(string info) { //On recherche une info dans la base de 
 
             VHS *cp = new VHS();
             cp = dynamic_cast<VHS*>(_baseRecherche[i]);
-            string durée = cp->durée();
+            string duree = cp->duree();
             string prod = cp->prod();
 
-            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(prod, info)) {
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(duree,info) || rechercheString(prod, info)) {
                 baseRechercheTmp.push_back(_baseRecherche[i]);
             }
         }
@@ -684,11 +684,11 @@ void Mediatheque::search(string info) { //On recherche une info dans la base de 
         else if (type == "DVD") {
             DVD *cp = new DVD();
             cp = dynamic_cast<DVD*>(_baseRecherche[i]);
-            string durée = cp->durée();
+            string duree = cp->duree();
             string nPiste = cp->nPiste();
             string prod = cp->prod();
 
-            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(durée,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(duree,info) || rechercheString(nPiste, info) || rechercheString(prod, info)) {
                 baseRechercheTmp.push_back(_baseRecherche[i]);
             }
 
@@ -709,12 +709,12 @@ void Mediatheque::search(string info) { //On recherche une info dans la base de 
         else if (type == "Revue") {
             Revue *cp = new Revue();
             cp =dynamic_cast<Revue*>(_baseRecherche[i]);
-            string année = cp->année();
-            string résumé = cp->résumé();
+            string annee = cp->annee();
+            string resume = cp->resume();
             string nPage = cp->nPage();
-            string éditeur = cp->éditeur();
+            string editeur = cp->editeur();
 
-            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(année,info) || rechercheString(résumé, info) || rechercheString(nPage, info) || rechercheString(éditeur, info)) {
+            if(rechercheString(nom,info) || rechercheString(auteur, info) || rechercheString(type, info) || rechercheString(annee,info) || rechercheString(resume, info) || rechercheString(nPage, info) || rechercheString(editeur, info)) {
                baseRechercheTmp.push_back(_baseRecherche[i]);
             }
 
@@ -731,7 +731,7 @@ void Mediatheque::search(string info) { //On recherche une info dans la base de 
     }
 
 
-    cout << "Recherche effectuée" << endl;
+    cout << "Recherche effectuee" << endl;
 
     _baseRecherche.clear();  //On efface alors la base de recherche et on recopie la base de recherche temporaire dans la base de recherche
 
@@ -741,34 +741,34 @@ void Mediatheque::search(string info) { //On recherche une info dans la base de 
 
     baseRechercheTmp.clear(); //On efface la base de recherche temporaire
 
-    unsigned nRésultat = static_cast<unsigned>(_baseRecherche.size());
-    if (nRésultat > 0) {//On indique le nombre de résultats à l'utilisateur
-        cout << "Résultats trouvés : " << nRésultat << ". Veuillez inscrire la commande LIST pour les afficher" << endl;
+    unsigned nResultat = static_cast<unsigned>(_baseRecherche.size());
+    if (nResultat > 0) {//On indique le nombre de resultats à l'utilisateur
+        cout << "Resultats trouves : " << nResultat << ". Veuillez inscrire la commande LIST pour les afficher" << endl;
     }
     else
-        cout << "Pas de résultat" << endl;
+        cout << "Pas de resultat" << endl;
 }
 
-void Mediatheque::clear() { //On réinitialise la base de recherche avec la base de données
+void Mediatheque::clear() { //On reinitialise la base de recherche avec la base de donnees
 
     _baseRecherche.clear();
 
-    for (unsigned i =0; i < static_cast<unsigned>(_baseDonnées.size()); i++) {
+    for (unsigned i =0; i < static_cast<unsigned>(_baseDonnees.size()); i++) {
 
-        _baseRecherche.push_back((_baseDonnées[i]));
+        _baseRecherche.push_back((_baseDonnees[i]));
     }
 
 
-    cout << "La base de recherche a été réinitialisée" << endl;
+    cout << "La base de recherche a ete reinitialisee" << endl;
 }
 
 void Mediatheque::list() { //On affiche les infos de base des ressources de la base de recherche
 
-    if(_baseDonnées.size() == _baseRecherche.size())
-        cout << "La médiathèque contient : " << _baseRecherche.size() << " ressources." << endl;
+    if(_baseDonnees.size() == _baseRecherche.size())
+        cout << "La mediathèque contient : " << _baseRecherche.size() << " ressources." << endl;
 
     else
-        cout << "La recherche précédente a donné : " << _baseRecherche.size() << " résultat(s)" << endl;
+        cout << "La recherche precedente a donne : " << _baseRecherche.size() << " resultat(s)" << endl;
 
     cout << "Voici la liste :" << endl;
     cout << "ID \t - \t Type \t - \t Nom \t - \t Auteur" << endl;

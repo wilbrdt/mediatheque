@@ -22,14 +22,14 @@ void CD::setProd(const string &prod)
     _prod = prod;
 }
 
-string CD::durée() const
+string CD::duree() const
 {
-    return _durée;
+    return _duree;
 }
 
-void CD::setDurée(const string &durée)
+void CD::setDuree(const string &duree)
 {
-    _durée = durée;
+    _duree = duree;
 }
 
 string CD::nPiste() const
@@ -45,7 +45,7 @@ void CD::setNPiste(const string &nPiste)
 void CD::show() {
 
     Ressources::show();
-    cout << "Durée du CD : " << _durée << endl;
+    cout << "Duree du CD : " << _duree << endl;
     cout << "Nombre de piste : " << _nPiste << endl;
     cout << "Maison de production : " << _prod << endl;
 

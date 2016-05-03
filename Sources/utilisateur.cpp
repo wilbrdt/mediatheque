@@ -14,21 +14,21 @@ Utilisateur::~Utilisateur() {
 
 }
 
-void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentMed) { //Reconnait l'action tapée par l'utilisateur et execute la fonction correspondante
+void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentMed) { //Reconnait l'action tapee par l'utilisateur et execute la fonction correspondante
 
-    string commande = découpageCommande(instruction);
-    string complément = découpageComplément(instruction);
+    string commande = decoupageCommande(instruction);
+    string complement = decoupageComplement(instruction);
 
     if (commande == "BYE") {
         currentMed->bye();
     }
 
     else if (commande == "SEARCH") {
-        currentMed->search(complément);
+        currentMed->search(complement);
     }
 
     else if (commande == "LOAD") {
-        currentMed->load(complément);
+        currentMed->load(complement);
     }
 
     else if (commande == "CLEAR") {
@@ -40,7 +40,7 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
     }
 
     else if (commande == "SHOW") {
-        currentMed->show(complément);
+        currentMed->show(complement);
     }
 
     else if (commande == "RESET") {
@@ -50,15 +50,15 @@ void Utilisateur::reconnaissanceAction(string instruction, Mediatheque *currentM
     else if(_estAdmin) {
 
         if (commande == "ADD") {
-            currentMed->add(complément);
+            currentMed->add(complement);
         }
 
         else if (commande == "SAVE") {
-            currentMed->save(complément);
+            currentMed->save(complement);
         }
 
         else if (commande == "DELETE") {
-            currentMed->deleteId(complément);
+            currentMed->deleteId(complement);
         }
     }
 

@@ -11,21 +11,21 @@ Revue::~Revue(){
 
 }
 
-string Revue::éditeur() const
+string Revue::editeur() const
 {
-    return _éditeur;
+    return _editeur;
 }
 
-void Revue::setÉditeur(const string &éditeur)
+void Revue::setEditeur(const string &editeur)
 {
-    _éditeur = éditeur;
+    _editeur = editeur;
 }
 
 
 void Revue::show() {
 
     Livre::show();
-    cout << "Editeur : " << _éditeur << endl;
+    cout << "Editeur : " << _editeur << endl;
     cout << "Nombre d'article : " << _tableauArticle.size() << endl;
 
 }
