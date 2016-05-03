@@ -1,0 +1,13 @@
+INPUT(
+./release\main.o
+./release\ressouces.o
+./release\livre.o
+./release\cd.o
+./release\vhs.o
+./release\num.o
+./release\dvd.o
+./release\article.o
+./release\revue.o
+./release\mediatheque.o
+./release\utilisateur.o
+);
