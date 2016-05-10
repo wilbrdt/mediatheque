@@ -15,7 +15,7 @@ int main() {
     cout << endl << "Bienvenue dans la bibliotheque de Babel" << endl << endl << "Quel est votre nom ?" << endl;
     getline(cin,nomUtilisateur);
     user->setNomUtilisateur(nomUtilisateur);
-    cout << endl << "Bonjour " << user->nomUtilisateur() << ", êtes-vous administrateur ?" <<endl;
+    cout << endl << "Bonjour " << user->nomUtilisateur() << ", etes-vous administrateur ?" <<endl;
     getline(cin,réponse);
     unsigned taille = static_cast<unsigned>(réponse.size());
     string newRéponse;
