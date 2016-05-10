@@ -5,14 +5,14 @@
 
 using namespace std;
 
-string découpageLigne(string ligne) { //Découpe la ligne en deux morceaux en fonction du premier séparateur  *=*
+string decoupageLigne(string ligne) { //Decoupe la ligne en deux morceaux en fonction du premier separateur  *=*
     unsigned pos = static_cast<unsigned>(ligne.find(" *=* "));
     unsigned tailleLigne = static_cast<unsigned>(ligne.size());
     string newLigne = ligne.substr(pos+5,tailleLigne-(pos+5));
     return newLigne;
 }
 
-string découpageMot(string ligne) { //Découpe le mot d'une ligne avnt le premier séparateur *=*
+string decoupageMot(string ligne) { //Decoupe le mot d'une ligne avnt le premier separateur *=*
     unsigned pos = static_cast<unsigned>(ligne.find(" *=* "));
     string mot = ligne.substr(0,pos);
     return mot;

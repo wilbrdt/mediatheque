@@ -24,20 +24,20 @@ void VHS::setProd(const string &prod)
     _prod = prod;
 }
 
-string VHS::durée() const
+string VHS::duree() const
 {
-    return _durée;
+    return _duree;
 }
 
-void VHS::setDurée(const string &durée)
+void VHS::setDuree(const string &duree)
 {
-    _durée = durée;
+    _duree = duree;
 }
 
 void VHS::show() {
 
     Ressources::show();
-    cout << "Durée de la VHS : " << _durée << endl;
+    cout << "Duree de la VHS : " << _duree << endl;
     cout << "Maison de production : " << _prod << endl;
 
 }

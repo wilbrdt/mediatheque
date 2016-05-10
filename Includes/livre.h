@@ -9,11 +9,11 @@ public :
     Livre();
     ~Livre();
 
-    string année() const;
-    void setAnnée(const string &année);
+    string annee() const;
+    void setAnnee(const string &annee);
 
-    string résumé() const;
-    void setRésumé(const string &résumé);
+    string resume() const;
+    void setResume(const string &resume);
 
     string nPage() const;
     void setNPage(const string &nPage);
@@ -21,8 +21,8 @@ public :
     virtual void show();
 
 protected :
-    string _année;
-    string _résumé;
+    string _annee;
+    string _resume;
     string _nPage;
 };
 

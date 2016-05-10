@@ -12,8 +12,8 @@ public:
     Revue();
     ~Revue();
 
-    virtual string éditeur() const;
-    void setÉditeur(const string &éditeur);
+    virtual string editeur() const;
+    void setEditeur(const string &editeur);
 
     virtual void show();
 
@@ -22,7 +22,7 @@ public:
     string getNomArticleI(int i);
 
 protected :
-    string _éditeur;
+    string _editeur;
     vector <Article *> _tableauArticle;
     string _nArticle;
 

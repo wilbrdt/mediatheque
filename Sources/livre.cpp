@@ -10,24 +10,24 @@ Livre::~Livre(){
 
 }
 
-string Livre::année() const
+string Livre::annee() const
 {
-    return _année;
+    return _annee;
 }
 
-void Livre::setAnnée(const string &année)
+void Livre::setAnnee(const string &annee)
 {
-    _année = année;
+    _annee = annee;
 }
 
-string Livre::résumé() const
+string Livre::resume() const
 {
-    return _résumé;
+    return _resume;
 }
 
-void Livre::setRésumé(const string &résumé)
+void Livre::setResume(const string &resume)
 {
-    _résumé = résumé;
+    _resume = resume;
 }
 
 string Livre::nPage() const
@@ -43,8 +43,8 @@ void Livre::setNPage(const string &nPage)
 void Livre::show() {
 
     Ressources::show();
-    cout << "Année de parution : " << _année << endl;
-    cout << "Résumé : " << _résumé << endl;
+    cout << "Annee de parution : " << _annee << endl;
+    cout << "Resume : " << _resume << endl;
     cout << "Nombre de page : " << _nPage << endl;
 
 }

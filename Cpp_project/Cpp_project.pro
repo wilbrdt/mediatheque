@@ -18,7 +18,6 @@ SOURCES += \
 
 HEADERS += \
     ../Includes/ressources.h \
-    ../Includes/livre.h \
     ../Includes/cd.h \
     ../Includes/vhs.h \
     ../Includes/num.h \
@@ -28,6 +27,7 @@ HEADERS += \
     ../Includes/mediatheque.h \
     ../Includes/utilisateur.h \
     ../Includes/library_string.h \
-    ../Includes/library_string2.h
+    ../Includes/library_string2.h \
+    ../Includes/livre.h
 
 DISTFILES +=

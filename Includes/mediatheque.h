@@ -40,7 +40,7 @@ public:
 
 protected :
     string _nomMed;
-    vector<Ressources *> _baseDonnées; //Base de données de la médiathèque
+    vector<Ressources *> _baseDonnees; //Base de donnees de la mediathèque
     vector <Ressources *> _baseRecherche; //Base de recherche courante
 };
 
