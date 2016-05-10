@@ -17,7 +17,16 @@ int main() {
     user->setNomUtilisateur(nomUtilisateur);
     cout << endl << "Bonjour " << user->nomUtilisateur() << ", êtes-vous administrateur ?" <<endl;
     getline(cin,réponse);
-    if(réponse == "oui" || réponse == "yes") {
+    unsigned taille = static_cast<unsigned>(réponse.size());
+    string newRéponse;
+    char c;
+
+    for (unsigned i =0; i < taille; i++) {
+        c = static_cast<char>(toupper(réponse[i]));
+        newRéponse.push_back(c);
+    }
+
+    if(newRéponse == "OUI") {
         cout << "Veuillez entrer le mot de passe" << endl;
         getline(cin,motPasse);
         if(motPasse == user->motPasseAdmin()) {

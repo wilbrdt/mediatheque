@@ -122,7 +122,7 @@ void Mediatheque::load(string filename) { //Charge la médiathèque correspondan
 
                 prod = ligne;
 
-                CD *ressource = new CD(); // creation d'un livre et incorporation des infos
+                CD *ressource = new CD();
                 ressource->setId(id);
                 ressource->setNom(nom);
                 ressource->setAuteur(auteur);
