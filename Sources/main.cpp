@@ -15,7 +15,6 @@ int main() {
     cout << endl << "Bienvenue dans la bibliotheque de Babel" << endl << endl << "Quel est votre nom ?" << endl;
     getline(cin,nomUtilisateur);
     user->setNomUtilisateur(nomUtilisateur);
-<<<<<<< HEAD
     cout << endl << "Bonjour " << user->nomUtilisateur() << ", êtes-vous administrateur ?" <<endl;
     getline(cin,réponse);
     unsigned taille = static_cast<unsigned>(réponse.size());
@@ -28,11 +27,9 @@ int main() {
     }
 
     if(newRéponse == "OUI") {
-=======
     cout << endl << "Bonjour " << user->nomUtilisateur() << ", etes-vous administrateur ?" <<endl;
     getline(cin,reponse);
     if(reponse == "oui" || reponse == "yes") {
->>>>>>> origin/master
         cout << "Veuillez entrer le mot de passe" << endl;
         getline(cin,motPasse);
         if(motPasse == user->motPasseAdmin()) {
