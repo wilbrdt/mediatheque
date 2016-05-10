@@ -2,8 +2,6 @@
 #include "../Includes/library_string.h"
 
 
-//test git / qt test test test
-
 Utilisateur::Utilisateur()
 {
     _motPasseAdmin = "ADMIN";
